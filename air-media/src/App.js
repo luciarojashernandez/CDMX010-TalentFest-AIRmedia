@@ -50,7 +50,7 @@ function App() {
         </div>
       </div> */}
 	  
-      <hr />
+      {/* <hr /> */}
 
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
       <Switch>

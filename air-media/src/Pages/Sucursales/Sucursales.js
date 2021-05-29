@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Slider from "../../Components/Carousel";
-import { SucHeader, SucContainer, SucPromo, SucTitle, SucStore, SucTextLocation, SucFooter, } from "./SucursalesElements";
+import Logo from '../../Assets/Images/logo.png'
+import { SucHeader, SucContainer, SucPromo, SucTitle, SucStore, SucTextLocation, SucFooter, MenuLogo } from "./SucursalesElements";
 
 function Home({ data }) {
   const stores = data.filter((item) => item.type === "sucursal");
@@ -10,7 +11,7 @@ function Home({ data }) {
     <Fragment>
       <SucContainer>
           <SucHeader>
-            {/* aQUÍ VA EL LOGO */}
+					<MenuLogo src={Logo} alt="logo"/>
           </SucHeader>
           <SucPromo>
             <Slider />
