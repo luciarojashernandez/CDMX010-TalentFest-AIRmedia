@@ -13,6 +13,12 @@ top: 0px;
 background: #fff;
 `;
 
+export const MenuLogo = styled.img`
+  display: block;
+	width: 65%;	
+  padding-left: 10px
+`;
+
 export const SucTitle= styled.h1`
 color: E85D17;
 text-align: center;
