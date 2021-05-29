@@ -23,16 +23,26 @@ import Burrico from "../../Assets/Images/burrico.png";
 import Instagram from "../../Assets/Images/insta.png";
 import Modal from "../../Components/Modal/Modal";
 
-const Menu = ({ data, setShowModal, showModal }) => {
+const Menu = ({
+  data,
+  setShowModal,
+  showModal,
+  listProducts,
+  setListProducts,
+  cart,
+  setCart,
+  item,
+}) => {
+  const { product, price, description, image } = item;
   console.log(data);
-  const products = data.filter((item) => item.type === "product");
+  //const products = data.filter((item) => item.type === "product");
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
   return (
     <MenuContent>
-      <LogoDiv>
+      {/* <LogoDiv>
         <MenuLogo src={Logo} alt="logo" />
       </LogoDiv>
       <InfoDiv>
@@ -50,20 +60,18 @@ const Menu = ({ data, setShowModal, showModal }) => {
             href="https://www.instagram.com/burrico.mx/"
           />
         </InstaRef>
-      </InfoDiv>
-      <SucPromo>
-        <Slider />
-      </SucPromo>
-      {products.map((product) => (
-        <button onClick={openModal}>
-          <MenuProduct key={data.id}>
-            <MenuImage src={product.image} alt="imagen" />
-            <MenuP>{product.product}</MenuP>
-            <MenuDescripcion>{product.description}</MenuDescripcion>
-            <MenuPrice>$ {product.price} MXN</MenuPrice>
-          </MenuProduct>
-        </button>
-      ))}
+      </InfoDiv> */}
+
+      {/* {products.map((product) => ( */}
+      <button onClick={openModal}>
+        <MenuProduct key={item.id}>
+          <MenuImage src={image} alt="imagen" />
+          <MenuP>{product}</MenuP>
+          <MenuDescripcion>{description}</MenuDescripcion>
+          <MenuPrice>$ {price} MXN</MenuPrice>
+        </MenuProduct>
+      </button>
+
       <Modal showModal={showModal} setShowModal={setShowModal} />
     </MenuContent>
   );
