@@ -36,19 +36,20 @@ function App() {
 
   return (
     <Router>
-      <div>
+      {/* <div>
         <h1>Navbar</h1>
         <div>
-          {/* El link enlaza Paths o secciones que son muy útiles para botones o links en el Navbar */}
+          El link enlaza Paths o secciones que son muy útiles para botones o links en el Navbar
           <Link to="/">
             <Slider />
             Sucursales de Burrico
           </Link>
           <Link to="/menu-burrico">Menu de Burrico</Link>
-          {/* Navlink con la clase "active" sirve como referencia al usuario para que sepa donde esta */}
+          Navlink con la clase "active" sirve como referencia al usuario para que sepa donde esta
           <Link to="/formulario-burrico">Formulario Burrico</Link>
         </div>
-      </div>
+      </div> */}
+	  
       <hr />
 
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
