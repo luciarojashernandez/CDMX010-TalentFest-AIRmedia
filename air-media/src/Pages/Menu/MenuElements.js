@@ -98,16 +98,16 @@ export const MenuImage = styled.img`
     width: 125px;
 		font-size: 13px;
 		font-weight: bold;
-    margin-left: 113px;
+    margin-left: 105px;
     margin-top: 26px;
 	`;
 
-	export const MenuDescripcion = styled.p`
-  	position:absolute;
+	export const MenuDescripcion = styled.p`  	
 		font-size: 11px;
-  	width: 190px;
-		margin-left: 113px;
+  	width: 180px;
+		margin-left: 10px;
 		margin-top: 55px;
+		text-align: left;
 	`;
 
 	export const MenuPrice = styled.p`
@@ -118,9 +118,10 @@ export const MenuImage = styled.img`
 		margin-top: 27px;
 		background: #E85D17;
 		color: white;
-		padding-left: 6px;
+		padding-left: 2px;
 		padding-top: 2px;
 		padding-bottom: 2px;
+		padding-right: 2px;
 		border-radius: 15px;	
 	`;
 
@@ -130,6 +131,12 @@ export const MenuImage = styled.img`
 	left: 24px;
 	top: 150px;
 	margin-top: 145px;
-	margin-left: 5px;
+	margin-left: 7px;
 	margin-bottom: 10px
 `;		
+
+export const ProductButton = styled.button`
+	border-color: transparent;
+	background-color: transparent;
+`;		
+

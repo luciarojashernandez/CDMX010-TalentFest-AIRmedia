@@ -76,7 +76,24 @@ export const SucPromo = styled.div`
   height: 82px;
   left: 24px;
   top: 150px;
-  margin-top: 145px;
-  margin-left: 5px;
+  margin-top: 220px;
+  margin-left: 26px;
   margin-bottom: 10px;
+`;
+
+export const MenuSearch = styled.input`
+  position: absolute;
+  width: 260px;
+  height: 44px;
+  left: 70px;
+  top: 260px;
+  border: 2px solid #E85D17;
+  box-sizing: border-box;
+  border-radius: 10px;
+  @media screen and (min-width: 768px) {
+    width: 180%;
+    left: -142px;
+    top: 120px;
+    border: 3px solid #E85D17;
+  }
 `;
