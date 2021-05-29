@@ -1,4 +1,7 @@
 import React, { Fragment } from "react";
+import Logo from '../../Assets/Images/logo.png'
+import {MenuLogo, MenuContent, MenuProduct, MenuImage, MenuP, MenuDescripcion} from './MenuElements'
+
 
 const Menu = ({ data }) => {
   console.log(data);
@@ -8,17 +11,22 @@ const Menu = ({ data }) => {
   const products = data.filter((item) => item.type === "product");
   //console.log(products);
   return (
-    <Fragment>
-      <h1>Menu de burrico</h1>
+      <MenuContent>			
+			<MenuLogo src={Logo} alt="logo"/>
+				    
+
       {products.map((product) => (
-        <div key={data.id}>
-          <img src={product.image} alt="imagen" />
-          <h3>{product.product}</h3>
-          <p>{product.description}</p>
+				<MenuProduct key={data.id}>
+					<MenuImage src={product.image} alt="imagen"/>
+					 <MenuP>{product.product}</MenuP>
+					 <MenuDescripcion>{product.description}</MenuDescripcion>
+                  
           <p>${product.price}</p>
-        </div>
+        
+				</MenuProduct>    
+         
       ))}
-    </Fragment>
+    </MenuContent>
   );
 };
 
