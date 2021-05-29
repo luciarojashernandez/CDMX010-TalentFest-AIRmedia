@@ -9,6 +9,7 @@ import {
 import Menu from "./Pages/Menu/Menu";
 import Form from "./Pages/Form/Form";
 import Sucursales from "./Pages/Sucursales/Sucursales";
+import Slider from './Components/Carousel'
 
 
 
@@ -47,6 +48,7 @@ function App() {
 				<div>
 					{/* El link enlaza Paths o secciones que son muy útiles para botones o links en el Navbar */}
 					<Link to="/" >
+						<Slider />
 					Sucursales de Burrico
 					</Link>
 					<Link to="/menu-burrico">
