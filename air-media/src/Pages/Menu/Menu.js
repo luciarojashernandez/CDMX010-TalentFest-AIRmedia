@@ -1,34 +1,25 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 
-function HomeRestaurante ({data}) {
+const Menu = ({ data }) => {
+  console.log(data);
+  //   const { category, description, image, price, product, type } = item;
 
-	let dataFilter = data.filter ((element) => element.type === "product")
-	console.log('data', dataFilter)
-	
-	return(
-		<Fragment>
-			<h1>Menu de burrico</h1>
-				{
-				dataFilter.map((item) => (
-					<div key={item.id}>
-						<img src={item.img} alt={item.id}></img>	
-					</div>
+  //   if (item.type === "producto") {
+  const products = data.filter((item) => item.type === "product");
+  //console.log(products);
+  return (
+    <Fragment>
+      <h1>Menu de burrico</h1>
+      {products.map((product) => (
+        <div key={data.id}>
+          <img src={product.image} alt="imagen" />
+          <h3>{product.product}</h3>
+          <p>{product.description}</p>
+          <p>${product.price}</p>
+        </div>
+      ))}
+    </Fragment>
+  );
+};
 
-				))
-				}
-
-			
-			{/* {data.map((element)=> (
-          <div key={element.id}>                      
-            <img src={element.image} alt={element.id}></img>						
-						<p>{element.product}</p>
-						<p>{element.description}</p>		
-						<p>{element.price}</p>
-				
-          </div>
-        ))} */}
-		</Fragment>
-	);
-}
-
-export default HomeRestaurante;
+export default Menu;
