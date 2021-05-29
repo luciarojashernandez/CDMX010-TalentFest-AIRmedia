@@ -65,7 +65,7 @@ function App() {
 			{/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
 			<Switch>			
 				<Route path="/menu-burrico">	
-					<Menu/>			
+					<Menu data={data} />			
 				</Route>
 				<Route path="/formulario-burrico">
 					<Form />				
