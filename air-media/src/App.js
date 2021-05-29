@@ -10,6 +10,7 @@ function App() {
   // Obtener la data de las colecciones en Firebase
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const ref = firebase.firestore().collection("Burrico");
   console.log(ref);
@@ -49,13 +50,13 @@ function App() {
           <Link to="/formulario-burrico">Formulario Burrico</Link>
         </div>
       </div> */}
-	  
+
       {/* <hr /> */}
 
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
       <Switch>
         <Route path="/menu-burrico">
-          <Menu data={data} />
+          <Menu data={data} setShowModal={setShowModal} showModal={showModal} />
         </Route>
         <Route path="/formulario-burrico">
           <Form />
