@@ -11,8 +11,8 @@ function Home ({data}) {
         {data.map((element)=> (
           <div key={element.id}>                      
             <img src={element.background} alt={element.id}></img>						
-						<p>{element.category}</p>
-						<p>{element.sucursal}</p>						
+						<p>{element.store}</p>
+						<p>{element.food}</p>							
           </div>
         ))}
       </div>

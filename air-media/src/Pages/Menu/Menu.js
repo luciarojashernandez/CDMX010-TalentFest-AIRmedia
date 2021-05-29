@@ -1,22 +1,32 @@
 import React, {Fragment} from 'react';
 
 function HomeRestaurante ({data}) {
+
+	let dataFilter = data.filter ((element) => element.type === "product")
+	console.log('data', dataFilter)
 	
 	return(
 		<Fragment>
 			<h1>Menu de burrico</h1>
-			<p>
 				{
-					data.map((item) => (
-						<div key={item.id}>
-							<img src={item.image} alt="imagen" />
-        			<h3>{item.product}</h3>
-        			<p>{item.description}</p>
-        			<p>${item.price}</p>
-						</div>
-					))
+				dataFilter.map((item) => (
+					<div key={item.id}>
+						<img src={item.img} alt={item.id}></img>	
+					</div>
+
+				))
 				}
-			</p>
+
+			
+			{/* {data.map((element)=> (
+          <div key={element.id}>                      
+            <img src={element.image} alt={element.id}></img>						
+						<p>{element.product}</p>
+						<p>{element.description}</p>		
+						<p>{element.price}</p>
+				
+          </div>
+        ))} */}
 		</Fragment>
 	);
 }
