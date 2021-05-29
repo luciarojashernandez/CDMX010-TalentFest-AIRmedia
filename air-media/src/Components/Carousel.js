@@ -60,7 +60,7 @@ const Slider= (props) => {
           onExiting={() => setAnimating(true)}
           onExited={() => setAnimating(false)}
         >
-            <img src={item.src} alt={item.altText} width='70%' height='300px'/>
+            <img src={item.src} alt={item.altText} width='312px' height='82px'/>
           <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
@@ -69,12 +69,12 @@ const Slider= (props) => {
     return (
       <div>
         <style>
-          {
+          {/* {
             `.custom-tag {
                 max-width: 100%;
                 height: 500px;
               }`
-          }
+          } */}
         </style>
         <Carousel
           activeIndex={activeIndex}
@@ -83,8 +83,8 @@ const Slider= (props) => {
         >
           <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
           {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+          <CarouselControl direction="prev" directionText="<" onClickHandler={previous} />
+          <CarouselControl direction="next" directionText=">" onClickHandler={next} />
         </Carousel>
       </div>
     );
