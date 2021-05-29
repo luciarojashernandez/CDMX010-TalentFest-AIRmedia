@@ -1,23 +1,24 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 
-function Home ({data}) {
+function Home({ data }) {
+  const stores = data.filter((item) => item.type === "sucursal");
 
-	return(
-		<Fragment>
-			<h1>Sucursales de Burrico</h1>
+  return (
+    <Fragment>
+      <h1>Sucursales de Burrico</h1>
 
-				<div>
+      <div>
         <h1>pruebas</h1>
-        {data.map((element)=> (
-          <div key={element.id}>                      
-            <img src={element.background} alt={element.id}></img>						
-						<p>{element.category}</p>
-						<p>{element.sucursal}</p>						
+        {stores.map((store) => (
+          <div key={data.id}>
+            <img src={store.background} alt="imagen" />
+            <h3>{store.store}</h3>
+            <p>{store.food}</p>
           </div>
         ))}
       </div>
-		</Fragment>
-	);
+    </Fragment>
+  );
 }
 
 export default Home;
