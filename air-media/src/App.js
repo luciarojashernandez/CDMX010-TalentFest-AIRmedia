@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./Firebase";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Menu from "./Pages/Menu/Menu";
 import Form from "./Pages/Form/Form";
 import Sucursales from "./Pages/Sucursales/Sucursales";
 import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
-import { SucPromo } from "./Components/Navbar/NavbarElements";
+import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -66,6 +66,7 @@ function App() {
           <SucPromo>
             <Slider />
           </SucPromo>
+					<MenuSearch type="text" name="name"/>					
           {productsData.map((item) => (
             <Menu
               data={data}

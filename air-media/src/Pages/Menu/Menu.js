@@ -1,27 +1,14 @@
 import React from "react";
-import Logo from "../../Assets/Images/logo.png";
 import {
-  MenuLogo,
   MenuContent,
   MenuProduct,
   MenuImage,
   MenuP,
-  LogoDiv,
   MenuDescripcion,
-  MenuPrice,
-  SucPromo,
-  InfoDiv,
-  MenuBurrico,
-  InfoRestaurant,
-  InfoSuc,
-  InfoDirection,
-  Insta,
-  InstaRef,
+  MenuPrice 
 } from "./MenuElements";
-import Slider from "../../Components/Carousel";
-import Burrico from "../../Assets/Images/burrico.png";
-import Instagram from "../../Assets/Images/insta.png";
 import Modal from "../../Components/Modal/Modal";
+import { ProductButton } from "./MenuElements";
 
 const Menu = ({
   data,
@@ -62,16 +49,16 @@ const Menu = ({
         </InstaRef>
       </InfoDiv> */}
 
-      {/* {products.map((product) => ( */}
-      <button onClick={openModal}>
+      {/* {products.map((product) => ( */}      
+			<ProductButton onClick={openModal} >
         <MenuProduct key={item.id}>
           <MenuImage src={image} alt="imagen" />
           <MenuP>{product}</MenuP>
           <MenuDescripcion>{description}</MenuDescripcion>
           <MenuPrice>$ {price} MXN</MenuPrice>
         </MenuProduct>
-      </button>
-
+			</ProductButton>
+      
       <Modal showModal={showModal} setShowModal={setShowModal} />
     </MenuContent>
   );

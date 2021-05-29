@@ -7,7 +7,7 @@ import {
   CarouselCaption
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import {CaroselImg} from './CarouselElements';
 import valle from '../Assets/Images/banner_del_valle.png'
 import xochimilco from '../Assets/Images/banner_xochimilco.png'
 import malinche from '../Assets/Images/banner_malinche.png'
@@ -60,7 +60,8 @@ const Slider= (props) => {
           onExiting={() => setAnimating(true)}
           onExited={() => setAnimating(false)}
         >
-            <img src={item.src} alt={item.altText} width='312px' height='82px'/>
+            {/* <img src={item.src} alt={item.altText} width='312px' height='82px'/> */}
+						<CaroselImg  src={item.src} alt={item.altText}/>
           <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
