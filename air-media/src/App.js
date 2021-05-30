@@ -20,11 +20,8 @@ function App() {
   //muestra productos en carrito
   const [cart, setCart] = useState([]);
 	
-
-	
 	const ref = firebase.firestore().collection("Burrico");
-  // console.log(ref);
-
+ 
   function getData() {
     setLoading(true);
     ref.onSnapshot((querySnapshot) => {
@@ -46,8 +43,7 @@ function App() {
   if (loading) {
     return <h1>Loading...</h1>;
   }
-
-	// console.log(listProducts);
+	
   return (
     <Router>
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}

@@ -33,7 +33,7 @@ function Home({ data }) {
         <SucPromo>
           <Slider />
         </SucPromo>
-        <SucTitle>Conoce nuestras sucursales</SucTitle>
+        <SucTitle>¡Conoce nuestras sucursales!</SucTitle>
         <SucStores>
           {stores.map((store) => (
             <SucStore key={data.id}>
