@@ -11,46 +11,40 @@ import Modal from "../../Components/Modal/Modal";
 import { ProductButton } from "./MenuElements";
 
 const Menu = ({
-  data,
+  showProduct,
+  setShowProduct,
+  //data,
   setShowModal,
   showModal,
   listProducts,
-  setListProducts,
-  cart,
-  setCart,
+  //setListProducts,
+  //cart,
+  //setCart,
   item,
 }) => {
+  console.log(listProducts, 'ListP');
+    //Guardar en una constante todos los parámetros para cada item
   const { product, price, description, image } = item;
-  console.log(data);
+  console.log(item, 'item');
+  // console.log(data);
   //const products = data.filter((item) => item.type === "product");
-  const openModal = () => {
+  const openModal = (id) => {
     setShowModal((prev) => !prev);
+    addInfoItem(id);
   };
+
+  const addInfoItem = (id)=>{
+    const item = listProducts.filter((item) => item.id === id);
+    setShowProduct([...showProduct, ...item]);
+  };
+
+  
 
   return (
     <MenuContent>
-      {/* <LogoDiv>
-        <MenuLogo src={Logo} alt="logo" />
-      </LogoDiv>
-      <InfoDiv>
-        <MenuBurrico src={Burrico} alt="logo burrico" />
-        <InfoRestaurant> Burri.Co </InfoRestaurant>
-        <InfoSuc> (Suc. Xochimilco) </InfoSuc>
-        <InfoDirection>
-          {" "}
-          Prol. Canal de Miramontes 2053, Tlalpan, CDMX.{" "}
-        </InfoDirection>
-        <InstaRef href="https://www.instagram.com/burrico.mx/">
-          <Insta
-            src={Instagram}
-            alt="instagram"
-            href="https://www.instagram.com/burrico.mx/"
-          />
-        </InstaRef>
-      </InfoDiv> */}
-
-      {/* {products.map((product) => ( */}      
-			<ProductButton onClick={openModal} >
+     
+      {/* {products.map((product) => ( */}     
+			<ProductButton onClick={()=>openModal()} >
         <MenuProduct key={item.id}>
           <MenuImage src={image} alt="imagen" />
           <MenuP>{product}</MenuP>

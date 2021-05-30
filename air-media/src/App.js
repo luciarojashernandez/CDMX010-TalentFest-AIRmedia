@@ -11,9 +11,13 @@ import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 function App() {
   // Obtener la data de las colecciones en Firebase
   const [data, setData] = useState([]);
+  //cargo de data
   const [loading, setLoading] = useState(false);
+  //muestra el espacio vacío del modal
   const [showModal, setShowModal] = useState(false);
+  //estado para mostrar datos por producto
   const [showProduct, setShowProduct] = useState([]);
+  //muestra productos en carrito
   const [cart, setCart] = useState([]);
 
   const ref = firebase.firestore().collection("Burrico");
@@ -34,8 +38,25 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
+
+  // const getProducts=(data)=>{
+  //   let products=[];
+  //   data.forEach((item)=>{
+  //     if(item.type === "product"){
+  //       return products.push()
+        
+  //     }
+      
+  //   })
+  //   console.log(products);
+  // }
+  // getProducts();
+
   const productsData = data.filter((item) => item.type === "product");
-  const [listProducts, setListProducts] = useState(productsData);
+  console.log(productsData);
+  //constante con estado inicial=Listado de productos
+  const [listProducts, setListProducts] = useState([productsData]);
+  console.log(listProducts);
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -43,22 +64,6 @@ function App() {
 
   return (
     <Router>
-      {/* <div>
-        <h1>Navbar</h1>
-        <div>
-          El link enlaza Paths o secciones que son muy útiles para botones o links en el Navbar
-          <Link to="/">
-            <Slider />
-            Sucursales de Burrico
-          </Link>
-          <Link to="/menu-burrico">Menu de Burrico</Link>
-          Navlink con la clase "active" sirve como referencia al usuario para que sepa donde esta
-          <Link to="/formulario-burrico">Formulario Burrico</Link>
-        </div>
-      </div> */}
-
-      {/* <hr /> */}
-
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
       <Switch>
         <Route path="/menu-burrico">
@@ -69,17 +74,19 @@ function App() {
 					<MenuSearch type="text" name="name"/>					
           {productsData.map((item) => (
             <Menu
-              data={data}
+              // data={data}
               key={item.id}
               item={item}
-              setShowModal={setShowModal}
-              showModal={showModal}
+              setShowProduct={setShowProduct}
+              showProduct={showProduct}
               listProducts={listProducts}
               setListProducts={setListProducts}
               cart={cart}
               setCart={setCart}
             />
           ))}
+          <showProduct
+          showProduct={showProduct}/>
         </Route>
         <Route path="/formulario-burrico">
           <Form />
