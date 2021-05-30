@@ -11,20 +11,26 @@ import Modal from "../../Components/Modal/Modal";
 import { ProductButton } from "./MenuElements";
 
 const Menu = ({
+	item,
+	cart,
+	setCart,
+	setListProducts,
+	setShowModal,
+	setShowProduct,
+	listProducts,
   showProduct,
-  setShowProduct,
+	showModal
+
+  // setShowProduct,
   //data,
-  setShowModal,
-  showModal,
-  listProducts,
+  // setShowModal,   
   //setListProducts,
   //cart,
-  //setCart,
-  item,
+  //setCart,  
 }) => {
-  console.log(listProducts, 'ListP');
+  // console.log(listProducts, 'ListP');
     //Guardar en una constante todos los parámetros para cada item
-  const { product, price, description, image } = item;
+  const { product, price, description, image, id } = item;
   console.log(item, 'item');
   // console.log(data);
   //const products = data.filter((item) => item.type === "product");
@@ -33,9 +39,9 @@ const Menu = ({
     addInfoItem(id);
   };
 
-  const addInfoItem = (id)=>{
+  const addInfoItem = (id) => {
     const item = listProducts.filter((item) => item.id === id);
-    setShowProduct([...showProduct, ...item]);
+    setShowProduct([...showModal, ...item]);
   };
 
   
@@ -44,8 +50,8 @@ const Menu = ({
     <MenuContent>
      
       {/* {products.map((product) => ( */}     
-			<ProductButton onClick={()=>openModal()} >
-        <MenuProduct key={item.id}>
+			<ProductButton onClick={() => openModal(id)} >
+        <MenuProduct key={id}>
           <MenuImage src={image} alt="imagen" />
           <MenuP>{product}</MenuP>
           <MenuDescripcion>{description}</MenuDescripcion>

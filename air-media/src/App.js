@@ -19,8 +19,11 @@ function App() {
   const [showProduct, setShowProduct] = useState([]);
   //muestra productos en carrito
   const [cart, setCart] = useState([]);
+	// constante con estado inicial=Listado de productos del menu
+  const [listProducts, setListProducts] = useState([]);
 
-  const ref = firebase.firestore().collection("Burrico");
+	
+	const ref = firebase.firestore().collection("Burrico");
   console.log(ref);
 
   function getData() {
@@ -31,37 +34,21 @@ function App() {
         items.push(doc.data());
       });
       setData(items);
-      setLoading(false);
+      setLoading(false);	
+			setListProducts(items.filter((element) => element.type === "product"))		
     });
   }
 
   useEffect(() => {
-    getData();
+    getData();    
   }, []);
-
-  // const getProducts=(data)=>{
-  //   let products=[];
-  //   data.forEach((item)=>{
-  //     if(item.type === "product"){
-  //       return products.push()
-        
-  //     }
-      
-  //   })
-  //   console.log(products);
-  // }
-  // getProducts();
-
-  const productsData = data.filter((item) => item.type === "product");
-  console.log(productsData);
-  //constante con estado inicial=Listado de productos
-  const [listProducts, setListProducts] = useState([productsData]);
-  console.log(listProducts);
+ 
 
   if (loading) {
     return <h1>Loading...</h1>;
   }
 
+	console.log(listProducts);
   return (
     <Router>
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
@@ -72,17 +59,19 @@ function App() {
             <Slider />
           </SucPromo>
 					<MenuSearch type="text" name="name"/>					
-          {productsData.map((item) => (
+          {listProducts.map((item) => (
             <Menu
               // data={data}
               key={item.id}
-              item={item}
+							item={item}
+							cart={cart}
+							setCart={setCart}
+							setListProducts={setListProducts}   
               setShowProduct={setShowProduct}
-              showProduct={showProduct}
-              listProducts={listProducts}
-              setListProducts={setListProducts}
-              cart={cart}
-              setCart={setCart}
+							showModal={showModal}
+							setShowModal={setShowModal}
+              // showProduct={showProduct}              
+               
             />
           ))}
           <showProduct
