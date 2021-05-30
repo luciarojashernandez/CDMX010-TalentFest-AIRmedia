@@ -109,7 +109,7 @@ export const SucText = styled.div`
 export const SucPstore = styled.p`
   color: white;
   position: absolute;
-  font-size: 12px;
+  font-size: 16px;
   padding: 15px;
   margin-left: -115px;
   @media screen and (min-width: 768px) {
@@ -119,7 +119,7 @@ export const SucPstore = styled.p`
 export const SucPfood = styled.p`
   color: white;
   position: absolute;
-  font-size: 12;
+  font-size: 16px;
   padding: 15px;
   margin-left: 105px;
   @media screen and (min-width: 768px) {
