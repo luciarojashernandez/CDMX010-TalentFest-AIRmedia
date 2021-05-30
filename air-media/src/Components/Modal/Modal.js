@@ -1,8 +1,7 @@
 import { useDialog } from "react-st-modal";
 import React, {useState} from "react";
-import { ModalContainer, 
-  ModalImgContainer, 
-  ModalH2, ModalP, ModalH4, ModalInput, ModalButton } from "./ModalElements";
+import {ModalContainer, ModalImgContainer, ModalH2, ModalP, ModalH4,
+	ModalInput, ModalButton, ModalCount, ModalCountBtn } from "./ModalElements";
 
 
 function Modal({item}) {	
@@ -28,11 +27,11 @@ function Modal({item}) {
 		<ModalP>{item.description}</ModalP>
 		<ModalH4>${item.price}MXN</ModalH4>
 		<ModalInput placeholder="Topping/Comentarios adicionales"></ModalInput>
-		<div>
-				<button onClick={restar}>-</button>
-				<div>{contador}</div>
-				<button onClick={sumar}>+</button>
-			</div>
+			<ModalCount>
+        <ModalCountBtn onClick={restar}>-</ModalCountBtn>
+        <div>{contador}</div>
+        <ModalCountBtn onClick={sumar}>+</ModalCountBtn>
+      </ModalCount>
 		<ModalButton
 			onClick={() => {
 				// Сlose the dialog and return the value

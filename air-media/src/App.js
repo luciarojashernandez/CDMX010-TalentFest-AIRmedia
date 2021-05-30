@@ -7,6 +7,7 @@ import Sucursales from "./Pages/Sucursales/Sucursales";
 import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
+import FloatButton from "./Components/FloatButton/FloatButton"
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -65,6 +66,7 @@ function App() {
 							setCart={setCart} 
             />
           ))}
+					<FloatButton />
         </Route>
         <Route path="/formulario-burrico">
           <Form />
