@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,6 +57,26 @@ box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
 }
 `;
+
+export const ModalCount = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 117px;
+  height: 30px;
+  top: 25px;
+  color: white;
+  background: #E85D17;
+  border-radius: 20px;
+`;
+export const ModalCountBtn = styled.button`
+ background: transparent;
+ border: none;
+ color: white;
+ font-size: 20px;
+`;
+
 // .fullscreen-modal .modal-dialog {
 //     margin: 0;
 //     margin-right: auto;
