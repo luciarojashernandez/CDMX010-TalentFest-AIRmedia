@@ -19,12 +19,8 @@ const Menu = ({
   cart,
   setCart,
 }) => {
-  // console.log(listProducts, 'ListP');
-
   //constante que guarda las propiedades del estado de los items
   const { product, price, description, image, id } = item;
-  // console.log(item, "item");
-
 
   return (
     <MenuContent>
