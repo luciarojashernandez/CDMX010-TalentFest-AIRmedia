@@ -11,20 +11,19 @@ import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 function App() {
   // Obtener la data de las colecciones en Firebase
   const [data, setData] = useState([]);
+  // constante con estado inicial=Listado de productos del menu
+  const [listProducts, setListProducts] = useState([]);
   //cargo de data
   const [loading, setLoading] = useState(false);
   //muestra el espacio vacío del modal
   const [showModal, setShowModal] = useState(false);
-  //estado para mostrar datos por producto
-  const [showProduct, setShowProduct] = useState([]);
   //muestra productos en carrito
   const [cart, setCart] = useState([]);
-	// constante con estado inicial=Listado de productos del menu
-  const [listProducts, setListProducts] = useState([]);
+	
 
 	
 	const ref = firebase.firestore().collection("Burrico");
-  console.log(ref);
+  // console.log(ref);
 
   function getData() {
     setLoading(true);
@@ -48,7 +47,7 @@ function App() {
     return <h1>Loading...</h1>;
   }
 
-	console.log(listProducts);
+	// console.log(listProducts);
   return (
     <Router>
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
@@ -61,21 +60,15 @@ function App() {
 					<MenuSearch type="text" name="name"/>					
           {listProducts.map((item) => (
             <Menu
-              // data={data}
               key={item.id}
-							item={item}
-							cart={cart}
-							setCart={setCart}
-							setListProducts={setListProducts}   
-              setShowProduct={setShowProduct}
-							showModal={showModal}
-							setShowModal={setShowModal}
-              // showProduct={showProduct}              
-               
+							item={item}      
+							listProducts={listProducts}
+              showModal={showModal}
+							setShowModal={setShowModal}           
+              cart={cart}
+							setCart={setCart} 
             />
           ))}
-          <showProduct
-          showProduct={showProduct}/>
         </Route>
         <Route path="/formulario-burrico">
           <Form />
