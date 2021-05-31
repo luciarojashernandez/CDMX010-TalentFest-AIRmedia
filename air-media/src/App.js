@@ -7,7 +7,7 @@ import Sucursales from "./Pages/Sucursales/Sucursales";
 import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
-import FloatButton from "./Components/FloatButton/FloatButton"
+import FloatButton from "./Components/FloatButton/FloatButton";
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -19,15 +19,12 @@ function App() {
   //muestra el espacio vacío del modal
   const [showModal, setShowModal] = useState(false);
   //muestra productos en carrito
-  const [cart, setCart] = useState({
-		comments: ' ',
-		total: 0
-	});
+  const [cart, setCart] = useState([]);
 
-	console.log('cartMenu', cart)
-	
-	const ref = firebase.firestore().collection("Burrico");
- 
+  console.log("cartMenu", cart);
+
+  const ref = firebase.firestore().collection("Burrico");
+
   function getData() {
     setLoading(true);
     ref.onSnapshot((querySnapshot) => {
@@ -36,20 +33,19 @@ function App() {
         items.push(doc.data());
       });
       setData(items);
-      setLoading(false);	
-			setListProducts(items.filter((element) => element.type === "product"))		
+      setLoading(false);
+      setListProducts(items.filter((element) => element.type === "product"));
     });
   }
 
   useEffect(() => {
-    getData();    
+    getData();
   }, []);
- 
 
   if (loading) {
     return <h1>Loading...</h1>;
   }
-	
+
   return (
     <Router>
       {/* Aqui se mete un Switch porque es lo que se va a renderizar segun el Path "Route" en el que nos encontremos */}
@@ -59,19 +55,19 @@ function App() {
           <SucPromo>
             <Slider />
           </SucPromo>
-					<MenuSearch type="text" name="name"/>					
+          <MenuSearch type="text" name="name" />
           {listProducts.map((item) => (
             <Menu
               key={item.id}
-							item={item}      
-							listProducts={listProducts}
+              item={item}
+              listProducts={listProducts}
               showModal={showModal}
-							setShowModal={setShowModal}           
+              setShowModal={setShowModal}
               cart={cart}
-							setCart={setCart} 
+              setCart={setCart}
             />
           ))}
-					<FloatButton />
+          <FloatButton />
         </Route>
         <Route path="/formulario-burrico">
           <Form />
