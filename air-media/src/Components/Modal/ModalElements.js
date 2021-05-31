@@ -77,6 +77,61 @@ export const ModalCountBtn = styled.button`
  font-size: 20px;
 `;
 
+export const ModalCartProduct = styled.div`
+display:flex;
+width: 310px;
+height: 111px;
+left: 335px;
+top: 532px;
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+margin-top: 15px;
+`;
+
+export const ModalCartImage = styled.img`
+  width: 97px;
+  height: 94px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
+  `;
+
+  export const ModalCartP = styled.p`
+  position: absolute;
+  width: 125px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 115px;
+  margin-top: 22px;
+`;
+
+export const ModalCartDescripcion = styled.p`  	
+font-size: 11px;
+width: 130px;
+margin-left: 10px;
+margin-top: 45px;
+text-align: left;
+`;
+
+
+export const ModalUnPrice = styled.p`
+position:absolute;
+font-size: 11px;
+width: 65px;
+margin-left: 230px;
+margin-top: 22px;
+background: #E85D17;
+color: white;
+padding-left: 2px;
+padding-top: 2px;
+padding-bottom: 2px;
+padding-right: 2px;
+border-radius: 15px;	
+`;
+
+
+
 // .fullscreen-modal .modal-dialog {
 //     margin: 0;
 //     margin-right: auto;

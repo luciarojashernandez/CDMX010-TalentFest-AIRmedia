@@ -68,7 +68,7 @@ function App() {
               setCart={setCart}
             />
           ))}
-          {cart.length === 0 ? null : <FloatButton />}
+          {cart.length === 0 ? null : <FloatButton cart={cart} setCart={setCart} />}
         </Route>
         <Route path="/formulario-burrico">
           <Form />
