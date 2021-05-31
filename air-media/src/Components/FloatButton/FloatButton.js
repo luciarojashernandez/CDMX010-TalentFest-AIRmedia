@@ -11,7 +11,7 @@ const FloatButton = ({cart, setCart}) => {
 		<DivButton>
 			{condition ? <Button onClick={async () => {
       const result = await CustomDialog(
-        <ModalCart cart={cart} setCart={setCart}/>,
+        <ModalCart cart={cart} setCart={setCart} />,
         {
           title: '',
           showCloseIcon: true,

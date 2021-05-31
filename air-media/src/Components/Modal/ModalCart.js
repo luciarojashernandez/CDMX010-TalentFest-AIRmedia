@@ -10,30 +10,26 @@ import {
 } from "./ModalElements";
 
 function ModalCart({cart, setCart}) {
-    const dialog = useDialog();
-
-	const calculeTotal = cart.reduce(
+    const dialog = useDialog();	
+			
+		const calculeTotal = cart.reduce(
         (sum, i) => sum + i.contador * i.price,
         0
-      ); 
-      
-      let total = 0;	
-		// console.log('cart del modal', cart.length)
+    );      
+    let total = 0;	
 
-		// for(let i=0; cart.length; i++){
-		// 	let products = cart[i].comments;
-		// 	console.log('products', products)		
-		// }
-		// let i =
-		// console.log(cart[i].comments)
 
-        // const [totalP, setTotalP ] = useState(0)
-        
-        // function multiply(){
-        //     cart.map((item) => 
-        //         setTotalP({item.contador * item.price})
-        //     )
-        // }
+
+		const deleteProduct = (id) => {
+			
+      let product = cart.filter(item => item.id !== id)
+      setCart(product)
+
+			console.log('cart', id)
+      console.log('eliminado')
+			console.log('product', product)			
+    }
+		
 
     return (
         <ModalContainer>
@@ -45,7 +41,9 @@ function ModalCart({cart, setCart}) {
                         <ModalCartImage src={item.image} alt={item.id}/>
                         <ModalCartP>{item.product}</ModalCartP>
                         <ModalCartDescripcion>{item.description}</ModalCartDescripcion>
+												{/* <p>{item.price}</p> */}
                         <ModalUnPrice>$ {total += item.contador * item.price} MXN</ModalUnPrice>
+												<button onClick={(id) => deleteProduct(id) }>Eliminar</button>
                         {/* <h3>{item.contador}  </h3> */}
                         {/* <h1>{total += item.contador * item.price}</h1> */}
                     </ModalCartProduct>
