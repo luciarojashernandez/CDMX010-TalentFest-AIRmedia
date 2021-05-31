@@ -42,7 +42,7 @@ function Modal({ item, cart, setCart }) {
     setComments(event.target.value);
   };
   const addComments = () => {
-    console.log("--------->", comments);
+    // console.log("--------->", comments);
     setComments("");
   };
   // <TextField
