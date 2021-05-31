@@ -3,7 +3,7 @@ import {Button, DivButton} from "./FloatButtonElements";
 import ModalCart from '../Modal/ModalCart'
 import { CustomDialog } from 'react-st-modal';
 
-const FloatButton = () => {
+const FloatButton = ({cart, setCart}) => {
 
 	const condition = true;
 	
@@ -11,7 +11,7 @@ const FloatButton = () => {
 		<DivButton>
 			{condition ? <Button onClick={async () => {
       const result = await CustomDialog(
-        <ModalCart/>,
+        <ModalCart cart={cart} setCart={setCart}/>,
         {
           title: '',
           showCloseIcon: true,
