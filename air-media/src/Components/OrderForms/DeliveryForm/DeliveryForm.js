@@ -14,7 +14,7 @@ import {
     FormComments
   } from "../../../Pages/Form/FormElements";
 
-const SubmissionForm = () => {
+const DeliveryForm = () => {
   return (
     <Fragment>
       {/* <FormNav /> */}
@@ -38,4 +38,4 @@ const SubmissionForm = () => {
   );
 };
 
-export default SubmissionForm;
+export default DeliveryForm;

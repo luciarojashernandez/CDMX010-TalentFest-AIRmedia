@@ -8,9 +8,9 @@ import {
     SelectDate,
     FormPhone,
     FormComments
-  } from "./FormToCollectElements";
+  } from "../../../Pages/Form/FormElements";
 
-const FormToCollect = () => {
+const PickUpForm = () => {
     return (
         <Fragment>
             {/* <FormNav /> */}
@@ -26,4 +26,4 @@ const FormToCollect = () => {
     );
 }
 
-export default FormToCollect;
+export default PickUpForm;

@@ -1,27 +1,31 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import FormNav from "../../Components/FormNav/FormNav";
-import {Link} from 'react-router-dom'
 import {
   FormBtns,
   FormRequestBtn,
   FormPickUpBtn,
 } from "./FormElements";
-import SubmissionForm from '../../Components/OrderForms/SubmissionForm/SubmissionForm'
-import FormToCollect from '../../Components/OrderForms/FormToCollect/FormToCollect'
+import DeliveryForm from '../../Components/OrderForms/DeliveryForm/DeliveryForm.js';
+import PickUpForm from '../../Components/OrderForms/PickUpForm/PickUpForm.js';
 
 function Form() {
+  const [deliveryForm,setDeliveryForm] = useState(true);
+  
+  const handleSetDelivery = () => setDeliveryForm(true);
+  const handleSetPickUp= () => setDeliveryForm(false);
+ 
 
-  const condition = true;
+
+
 
   return (
     <Fragment>
       <FormNav />
       <FormBtns>
-        {condition ?<FormRequestBtn>Solicitar envio</FormRequestBtn>
-        :<FormPickUpBtn>Recoger pedido</FormPickUpBtn>}
+        <FormRequestBtn onClick={handleSetDelivery}>Solicitar envío</FormRequestBtn>
+        <FormPickUpBtn onClick={handleSetPickUp}>Recoger pedido</FormPickUpBtn>
       </FormBtns>
-      {/* <SubmissionForm /> */}
-      {/* <FormToCollect /> */}
+      {deliveryForm?<DeliveryForm />:<PickUpForm/>}                      
     </Fragment>
   );
 }

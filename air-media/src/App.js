@@ -8,8 +8,7 @@ import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 import FloatButton from "./Components/FloatButton/FloatButton";
-import SubmissionForm from "./Components/OrderForms/SubmissionForm/SubmissionForm";
-import FormToCollect from "./Components/OrderForms/FormToCollect/FormToCollect";
+
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -74,7 +73,7 @@ function App() {
         <Route path="/formulario-burrico">
           <Form />
           {/* <Link to="/formulario-burrico"><SubmissionForm /></Link> */}
-          <FormToCollect />
+          {/* <FormToCollect /> */}
         </Route>
         <Route path="/">
           <Sucursales data={data} />
