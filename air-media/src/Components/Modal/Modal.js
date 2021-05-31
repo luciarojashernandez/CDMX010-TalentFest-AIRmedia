@@ -16,45 +16,43 @@ function Modal({ item, cart, setCart }) {
   // Estado contador
   const [contador, setContador] = useState(0);
   const [comments, setComments] = useState("");
+	const [finalPrice, setFinalPrice] = useState(0);
 
   // Poblar el carrito
   const cartItems = () => {
     let productElement = item;
-    setCart([...cart, { ...productElement, contador, comments }]);
+		
+    setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
   };
-  console.log("cart", cart);
-
+ 
   // Funcionalidad del contador
   function sumar() {
     setContador(contador + 1);
-  }
+  };
   function restar() {
     setContador(contador !== 0 ? contador - 1 : contador);
-  }
+  };
 
-  //   const handleComments = (event) => {
-  //     setCart({
-  //       ...cart,
-  //       comments: event.target.value,
-  //     });
-  //   };
+	// Agregar comentarios
   const handleComments = (event) => {
     setComments(event.target.value);
   };
   const addComments = () => {
-    // console.log("--------->", comments);
     setComments("");
   };
-  // <TextField
-  //         label="Número de mesa"
-  //         type="number"
-  //         variant="outlined"
-  //         // onChange={handleNumberChange}
-  //         onChange={handleOrder}
-  //         id="table"
-  //       />
+	
+	// Precio final del pedido
+	function total () {		
+		setFinalPrice(item.price * contador)		
+	}
 
-  // console.log('item modal', item);
+	console.log('finalprice', finalPrice)
+	console.log('precio final', item.price * contador)
+
+
+
+
+
   const dialog = useDialog();
 
   // const [value, setValue] = useState();
@@ -81,6 +79,7 @@ function Modal({ item, cart, setCart }) {
           dialog.close();
           cartItems();
           addComments();
+					total ();
         }}
       >
         Agregar producto
