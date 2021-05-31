@@ -19,7 +19,12 @@ function App() {
   //muestra el espacio vacío del modal
   const [showModal, setShowModal] = useState(false);
   //muestra productos en carrito
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({
+		comments: ' ',
+		total: 0
+	});
+
+	console.log('cartMenu', cart)
 	
 	const ref = firebase.firestore().collection("Burrico");
  
