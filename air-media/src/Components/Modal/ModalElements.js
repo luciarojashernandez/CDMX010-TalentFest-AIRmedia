@@ -41,6 +41,7 @@ border-radius: 10px;
   padding: 5px;
 }
 `;
+
 export const ModalButton = styled.button`
 position: relative;
 width: 259px;
@@ -49,8 +50,8 @@ color: white;
 border: none;
 background: #E85D17;
 cursor: pointer;
-top: 80px;
-margin-bottom: 40px;
+top: 45px;
+margin-bottom: 60px;
 border-radius: 15px;
 box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
 &:hover{
@@ -103,11 +104,11 @@ export const ModalCartImage = styled.img`
   font-size: 13px;
   font-weight: bold;
   margin-left: 115px;
-  margin-top: 22px;
+  margin-top: 20px;
 `;
 
 export const ModalCartDescripcion = styled.p`  	
-font-size: 11px;
+font-size: 9px;
 width: 130px;
 margin-left: 10px;
 margin-top: 45px;
@@ -130,8 +131,107 @@ padding-right: 2px;
 border-radius: 15px;	
 `;
 
+export const ModalCartDelete = styled.button`
+position: absolute;
+width: 80px;
+height: 20px;
+left: 230px;
+right: 15px;
+margin-top: 80px;
+color: white;
+border: none;
+background: #E85D17;
+`;
+
+export const ModalCartQty = styled.p`
+position: absolute;
+font-size: 13px;
+font-weight: bold;
+left: 130px;
+margin-top: 80px;
+
+`;
+
+export const ModalCartInput = styled.input`
+position: relative;
+width: 310px;
+top: 25px;
+height: 96px;
+border: 2px solid #E85D17;
+box-sizing: border-box;
+border-radius: 10px;
+::placeholder{
+  padding: 5px;
+}
+`;
+export const ModalSubtotal = styled.h3`
+  position:relative;
+  top: 40px;
+`;
+export const ModalCartBtns = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 320px;
+  justify-content: space-around;
+  margin-top: 25px;
+`;
+
+export const ModalBtnCancel = styled.button`
+position: relative;
+width: 141px;
+height: 35px;
+
+background: transparent;
+border: 2px solid #E85D17;
+box-sizing: border-box;
+border-radius: 15px;
+cursor: pointer;
+top: 40px;
+margin-bottom: 60px;
+&:hover{
+  box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
+}
+`;
+
+export const ModalBtnContinue = styled.button`
+position: relative;
+width: 141px;
+height: 35px;
 
 
+border: none;
+color: white;
+background: #E85D17;
+border-radius: 15px;
+box-sizing: border-box;
+cursor: pointer;
+top: 40px;
+margin-bottom: 60px;
+&:hover{
+  box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
+}
+`;
+
+export const ModalCartCount = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80px;
+  height:24px;
+  margin-top: 80px;
+  margin-right: 15px;
+  color: white;
+  background: #E85D17;
+  border-radius: 20px;
+`;
+
+export const ModalCartCountBtn = styled.button`
+ background: transparent;
+ border: none;
+ color: white;
+ font-size: 20px;
+`;
 // .fullscreen-modal .modal-dialog {
 //     margin: 0;
 //     margin-right: auto;
