@@ -26,13 +26,13 @@ const Menu = ({
     <MenuContent>
       <ProductButton onClick={async () => {
       const result = await CustomDialog(
-        <Modal item={item}/>,
+        <Modal item={item} cart={cart} setCart={setCart}/>,
         {
           title: '',
           showCloseIcon: true,
         }
       );
-      console.log("result",result);
+      // console.log("result",result);
     }}>
         <MenuProduct key={id}>
           <MenuImage src={image} alt="imagen" />
