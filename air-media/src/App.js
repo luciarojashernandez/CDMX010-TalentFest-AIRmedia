@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./Firebase";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Menu from "./Pages/Menu/Menu";
 import Form from "./Pages/Form/Form";
 import Sucursales from "./Pages/Sucursales/Sucursales";
@@ -8,6 +8,8 @@ import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 import FloatButton from "./Components/FloatButton/FloatButton";
+import SubmissionForm from "./Components/OrderForms/SubmissionForm/SubmissionForm";
+import FormToCollect from "./Components/OrderForms/FormToCollect/FormToCollect";
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -67,10 +69,12 @@ function App() {
               setCart={setCart}
             />
           ))}
-          {cart.length === 0 ? <p></p> : <FloatButton />}
+          {cart.length === 0 ? null : <FloatButton />}
         </Route>
         <Route path="/formulario-burrico">
           <Form />
+          {/* <Link to="/formulario-burrico"><SubmissionForm /></Link> */}
+          <FormToCollect />
         </Route>
         <Route path="/">
           <Sucursales data={data} />
