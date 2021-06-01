@@ -1,5 +1,6 @@
 import { useDialog } from "react-st-modal";
 import React, { useState } from "react";
+
 import { BrowserRouter as Router, Link} from 'react-router-dom'
 import Form from '../../Pages/Form/Form'
 
@@ -21,6 +22,7 @@ import {
 
 function ModalCart({ cart, setCart }) {
   const dialog = useDialog();
+
   let total = 0;
 
   const [updatableCart, setUpdatableCart] = useState(cart)
@@ -72,6 +74,7 @@ function ModalCart({ cart, setCart }) {
               );
           })
       }
+
       <ModalCartInput placeholder="Comentarios adicionales"></ModalCartInput>
       <ModalSubtotal>SubTotal:{calculeTotal.toFixed(2)}</ModalSubtotal>
       <ModalCartBtns>
@@ -83,6 +86,7 @@ function ModalCart({ cart, setCart }) {
         >
           Cancelar
         </ModalBtnCancel>
+
         <Link to= "/formulario-burrico">
 					<ModalBtnContinue>Continuar</ModalBtnContinue>
 					
@@ -90,6 +94,7 @@ function ModalCart({ cart, setCart }) {
       </ModalCartBtns>
     </ModalContainer>
 		</Router>
+
   );
 }
 

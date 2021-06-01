@@ -11,7 +11,6 @@ import {
   ModalCount,
   ModalCountBtn,
 } from "./ModalElements";
-
 function Modal({ item, cart, setCart }) {
   // Estado contador
   const [contador, setContador] = useState(1);
