@@ -9,7 +9,6 @@ import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 import FloatButton from "./Components/FloatButton/FloatButton";
 
-
 function App() {
   // Obtener la data de las colecciones en Firebase
   const [data, setData] = useState([]);
@@ -43,8 +42,6 @@ function App() {
     getData();
   }, []);
 
-
-
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -70,12 +67,12 @@ function App() {
               setCart={setCart}
             />
           ))}
-          {cart.length === 0 ? null : <FloatButton cart={cart} setCart={setCart} />}
+          {cart.length === 0 ? null : (
+            <FloatButton cart={cart} setCart={setCart} />
+          )}
         </Route>
         <Route path="/formulario-burrico">
           <Form />
-          {/* <Link to="/formulario-burrico"><SubmissionForm /></Link> */}
-          {/* <FormToCollect /> */}
         </Route>
         <Route path="/">
           <Sucursales data={data} />
