@@ -5,6 +5,9 @@ export const MenuContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
 `;
 
 export const LogoDiv = styled.div`
@@ -75,8 +78,6 @@ export const SucPromo = styled.div`
   width: 312px;
   height: 82px;
   left: 24px;
-  top: 150px;
-  margin-top: 220px;
   margin-left: 26px;
   margin-bottom: 10px;
 `;
@@ -85,8 +86,8 @@ export const MenuSearch = styled.input`
   position: absolute;
   width: 260px;
   height: 44px;
-  left: 70px;
-  top: 260px;
+  left: 50px;
+  top: 25px;
   border: 2px solid #E85D17;
   box-sizing: border-box;
   border-radius: 10px;

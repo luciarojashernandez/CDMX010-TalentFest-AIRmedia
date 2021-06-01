@@ -1,4 +1,40 @@
 import styled from "styled-components";
+import {FaHome, FaHeart, FaUserCircle} from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
+
+export const IconSearch = styled(FiSearch)`
+font-size: 1.5rem;
+    color: #E85D17;
+    margin-top: 68px;
+    margin-left: 290px;
+    z-index: 5;
+;
+`;
+
+export const IconUser = styled(FaUserCircle)`
+    font-size: 2rem;
+    transform: translate(50%, -15%);
+    margin-top: 15px;
+    color: #E85D17;
+   margin-right: 40px;
+`;
+
+export const IconLike = styled(FaHeart)`
+    font-size: 2rem;
+    transform: translate(50%, -15%);
+    margin-top: 15px;
+    color: #E85D17;
+   margin-right: 60px;
+`;
+
+export const IconHome = styled(FaHome)`
+    font-size: 2rem;
+    transform: translate(50%, -15%);
+    margin-top: 15px;
+    color: #E85D17;
+   margin-right: 70px;
+`;
+
 export const SucContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -136,7 +172,7 @@ export const SucFooter = styled.div`
   z-index: 2;
   margin-top: 560px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   @media screen and (min-width: 768px) {
     width: 100vw;
     height: 120px;

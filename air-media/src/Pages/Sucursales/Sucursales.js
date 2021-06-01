@@ -14,6 +14,10 @@ import {
   SucPstore,
   SucPfood,
   SucFooter,
+  IconHome,
+  IconLike,
+  IconUser,
+  IconSearch
 } from "./SucursalesElements";
 import Logo from "../../Assets/Images/logo.png";
 // import { FaSearch, FaHome, FaHeart, FaUserCircle } from "react-icons/fa";
@@ -26,8 +30,8 @@ function Home({ data }) {
         <SucHeader>
           {/* <SucFooter/> */}
           <SucLogo src={Logo} alt="logo" />
+          <IconSearch/>
           <SucSearch type="text" name="name">
-            {/* <FaSearch style={iconStyles} /> */}
           </SucSearch>
         </SucHeader>
         <SucPromo>
@@ -48,9 +52,9 @@ function Home({ data }) {
           ))}
         </SucStores>
         <SucFooter>
-          {/* <FaHome style={iconStyles} />
-          <FaHeart style={iconStyles} />
-          <FaUserCircle style={iconStyles} /> */}
+          <IconHome/>
+          <IconLike/>
+          <IconUser/>
         </SucFooter>
       </SucContent>
     </Fragment>
