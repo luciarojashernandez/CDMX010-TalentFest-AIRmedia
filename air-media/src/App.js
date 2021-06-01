@@ -8,6 +8,8 @@ import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 import FloatButton from "./Components/FloatButton/FloatButton";
+import {IconArrow} from "./AppElements"
+
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -55,6 +57,7 @@ function App() {
           <SucPromo>
             <Slider />
           </SucPromo>
+					<Link to="/"><IconArrow /></Link>
           <MenuSearch type="text" name="name" />
           {listProducts.map((item) => (
             <Menu
@@ -73,6 +76,7 @@ function App() {
         </Route>
         <Route path="/formulario-burrico">
           <Form />
+					<Link to="/"><IconArrow /><p>Menú principal</p></Link>
         </Route>
         <Route path="/">
           <Sucursales data={data} />
