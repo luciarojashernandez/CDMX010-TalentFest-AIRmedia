@@ -17,18 +17,15 @@ function Modal({ item, cart, setCart }) {
   const [contador, setContador] = useState(1);
   const [comments, setComments] = useState("");
 	const [finalPrice, setFinalPrice] = useState(0);
-
 	// Precio final del pedido
 	function cartItems () {	
 		console.log(`new`, finalPrice)	
 		let productElement = item;
 		setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
 	}
-
   // Poblar el carrito
   //const cartItems = () => {
   //};
- 
   // Funcionalidad del contador
   function sumar() {
     setContador(contador + 1);
@@ -36,7 +33,6 @@ function Modal({ item, cart, setCart }) {
   function restar() {
     setContador(contador !== 0 ? contador - 1 : contador);
   };
-
 	// Agregar comentarios
   const handleComments = (event) => {
     setComments(event.target.value);
@@ -44,23 +40,14 @@ function Modal({ item, cart, setCart }) {
   const addComments = () => {
     setComments("");
   };
-	
 	// // Precio final del pedido
 	 function total () {		
 	 	setFinalPrice(item.price * (contador + 1))		
 	 }
-
 	console.log('finalprice', finalPrice)
 	console.log('precio final', item.price * contador)
-
-
-
-
-
   const dialog = useDialog();
-
   // const [value, setValue] = useState();
-
   return (
     <ModalContainer>
       <ModalImgContainer src={item.image} alt="img"></ModalImgContainer>
@@ -91,5 +78,4 @@ function Modal({ item, cart, setCart }) {
     </ModalContainer>
   );
 }
-
 export default Modal;
