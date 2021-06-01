@@ -43,6 +43,8 @@ function App() {
     getData();
   }, []);
 
+
+
   if (loading) {
     return <h1>Loading...</h1>;
   }

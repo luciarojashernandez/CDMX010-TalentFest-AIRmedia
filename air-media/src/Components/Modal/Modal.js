@@ -52,7 +52,7 @@ function Modal({ item, cart, setCart }) {
       <ModalImgContainer src={item.image} alt="img"></ModalImgContainer>
       <ModalH2>{item.product}</ModalH2>
       <ModalP>{item.description}</ModalP>
-      <ModalH4>${item.price}MXN</ModalH4>
+      <ModalH4>${contador * item.price}MXN</ModalH4>
       <ModalInput
         placeholder="Topping/Comentarios adicionales"
         onChange={handleComments}
