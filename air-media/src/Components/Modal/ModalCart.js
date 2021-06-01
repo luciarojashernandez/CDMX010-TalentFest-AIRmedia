@@ -1,5 +1,8 @@
 import { useDialog } from "react-st-modal";
 import React, { useState } from "react";
+import { BrowserRouter as Router, Link} from 'react-router-dom'
+import Form from '../../Pages/Form/Form'
+
 import {
   ModalContainer,
   ModalCartProduct,
@@ -18,40 +21,23 @@ import {
 
 function ModalCart({ cart, setCart }) {
   const dialog = useDialog();
-
-  const calculeTotal = cart.reduce((sum, i) => sum + i.contador * i.price, 0);
-
   let total = 0;
- 
-	// let cartId = cart.map((item) => item.id)
-	// console.log('cartt', cartId)
-	const[elemento, setElemento] = useState(cart)
 
+  const [updatableCart, setUpdatableCart] = useState(cart)
 
-	const deleteProduct = (id) => {
+  const calculeTotal = updatableCart.reduce((sum, i) => sum + i.contador * i.price, 0);
 
-		
-		// let grupo = []
+	const deleteProduct = (id) =>
+    {
 
-		// let cartId = cart.map((item) => item.id)
-		// console.log('cartId', cartId)
-
-    // let product = cart.map((item) => item)
-		// let filter = product.filter((item) => item)
-
-		// console.log('filter', filter)
-		// console.log('product', product)
-		// console.log('grupo', grupo)
-		
-
-		let product = cart.filter(item => { console.log(item.id); return(item.id !== id )})
-		setCart([...product])
-		setElemento([...product])
-
-	
-
-		console.log('prouct', product)
-		console.log('cart', cart)
+        const product = updatableCart.filter(item =>
+        {
+            return(item.id !== id )
+        })
+        
+		setCart(product)
+        setUpdatableCart(product)
+        
 		// console.log('item', item.id)
 
 		// let product = cart.splice(item => item.id !== cartId)
@@ -62,31 +48,30 @@ function ModalCart({ cart, setCart }) {
   }
 
   return (
+		<Router>
     <ModalContainer>
         <br></br>
       <h1>Pedido</h1>
-      {cart.map((elemento) => {
-        // {total += item.contador * item.price}
-        return (
-          <ModalCartProduct key={elemento.id}>
-            <ModalCartImage src={elemento.image} alt={elemento.id} />
-            <ModalCartP>{elemento.product}</ModalCartP>
-            <ModalCartDescripcion>Comentarios:{elemento.comments}</ModalCartDescripcion>
-            <ModalUnPrice>
-              $ {(total += elemento.contador * elemento.price)} MXN
-            </ModalUnPrice>
-            <ModalCartDelete onClick={() => deleteProduct(elemento.id)}>Borrar</ModalCartDelete>
-            <ModalCartQty>Productos: {elemento.contador}</ModalCartQty>
-            {/* <ModalCartCount>
-              <ModalCartCountBtn onClick={restar}>-</ModalCartCountBtn>
-              <div>{contador}</div>
-              <ModalCartCountBtn onClick={sumar}>+</ModalCartCountBtn>
-            </ModalCartCount> */}
-            {/* <h3>{item.contador}  </h3> */}
-            {/* <h1>{total += item.contador * item.price}</h1> */}
-          </ModalCartProduct>
-        );
-      })}
+
+      {
+          updatableCart.map((elemento) => {
+              // {total += item.contador * item.price}
+              return (
+                  <ModalCartProduct key={elemento.id}>
+
+                      <ModalCartImage src={elemento.image} alt={elemento.id}/>
+                      <ModalCartP>{elemento.product}</ModalCartP>
+                      <ModalCartDescripcion>Comentarios:{elemento.comments}</ModalCartDescripcion>
+                      <ModalUnPrice>
+                          $ {(elemento.contador * elemento.price)} MXN
+                      </ModalUnPrice>
+                      <ModalCartDelete onClick={() => deleteProduct(elemento.id)}>Borrar</ModalCartDelete>
+                      <ModalCartQty>Productos: {elemento.contador}</ModalCartQty>
+
+                  </ModalCartProduct>
+              );
+          })
+      }
       <ModalCartInput placeholder="Comentarios adicionales"></ModalCartInput>
       <ModalSubtotal>SubTotal:{calculeTotal.toFixed(2)}</ModalSubtotal>
       <ModalCartBtns>
@@ -98,9 +83,13 @@ function ModalCart({ cart, setCart }) {
         >
           Cancelar
         </ModalBtnCancel>
-        <ModalBtnContinue>Continuar</ModalBtnContinue>
+        <Link to= "/formulario-burrico">
+					<ModalBtnContinue>Continuar</ModalBtnContinue>
+					
+					</Link> 
       </ModalCartBtns>
     </ModalContainer>
+		</Router>
   );
 }
 
