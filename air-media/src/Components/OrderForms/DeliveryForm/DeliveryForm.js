@@ -17,7 +17,7 @@ import {
 
 const DeliveryForm = () => {
   function Whatsapp() {
-    let restaurantNumber = 5531451964;
+    let restaurantNumber = 525531345330;
 
     // Info del cliente
     let cart = "1-hamburgesa-100,2-malteadas-500";
@@ -25,7 +25,7 @@ const DeliveryForm = () => {
     let direccion = "San Miguel De Allende";
 
     // Concatenación
-    let concatenar = cart + clientName + direccion;
+    let concatenar = cart + ';' + clientName + ';' + direccion;
     console.log("concatenado", concatenar);
 
     // Modificando espacios en blanco
