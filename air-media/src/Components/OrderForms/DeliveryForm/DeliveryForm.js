@@ -1,5 +1,6 @@
 //formulario de envio
 import React, { Fragment } from "react";
+
 // import FormNav from "../../FormNav/FormNav";
 import {
   FormDiv,
@@ -23,10 +24,12 @@ const DeliveryForm = () => {
     let cart = "1-hamburgesa-100,2-malteadas-500";
     let clientName = "Alejandra Garcia";
     let direccion = "San Miguel De Allende";
+    let message = "¡Bienvenido a DARKITCHENS! Tu pedido actual es:";
+		let destinatary = " A nombre de:";
+		let address = "Con punto de entrega en:"
 
     // Concatenación
-    let concatenar = cart + ';' + clientName + ';' + direccion;
-    console.log("concatenado", concatenar);
+    let concatenar = message + '' + cart + ';' + destinatary + ' ' + clientName + ';' + ' ' + address + ' ' + direccion;
 
     // Modificando espacios en blanco
     let remplazandoEspacios = concatenar.replace(/\s/gi, "%20");
@@ -38,7 +41,6 @@ const DeliveryForm = () => {
 
   return (
     <Fragment>
-      {/* <FormNav /> */}
       <FormDiv>
         <FormName type="text" name="name" placeholder="Nombre" />
         <FormAdress type="text" name="name" placeholder="Domicilio" />

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+
 export const FormBtns = styled.div`
   position: absolute;
   display: flex;
@@ -164,7 +166,6 @@ export const FormComments = styled.input`
   }
 `;
 export const FormBtnDelivery = styled.button`
-  position: relative;
   width: 259px;
   height: 33px;
   margin: 50px;
@@ -172,6 +173,7 @@ export const FormBtnDelivery = styled.button`
   margin-bottom: 55px;
   border: none;
   color: white;
+  margin-top: 175px;
   background: #1bd741;
   border-radius: 15px;
   &:hover {

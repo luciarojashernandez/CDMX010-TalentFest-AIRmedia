@@ -8,8 +8,14 @@ import Slider from "./Components/Carousel";
 import Navbar from "./Components/Navbar/Navbar";
 import { SucPromo, MenuSearch } from "./Components/Navbar/NavbarElements";
 import FloatButton from "./Components/FloatButton/FloatButton";
-import {IconArrow} from "./AppElements"
-
+import {
+  IconArrow,
+  IconSearch,
+  AppTools,
+  AppContainer,
+  IconRetMenu,
+  AppP,
+} from "./AppElements";
 
 function App() {
   // Obtener la data de las colecciones en Firebase
@@ -54,29 +60,41 @@ function App() {
       <Switch>
         <Route path="/menu-burrico">
           <Navbar />
-          <SucPromo>
-            <Slider />
-          </SucPromo>
-					<Link to="/"><IconArrow /></Link>
-          <MenuSearch type="text" name="name" />
-          {listProducts.map((item) => (
-            <Menu
-              key={item.id}
-              item={item}
-              listProducts={listProducts}
-              showModal={showModal}
-              setShowModal={setShowModal}
-              cart={cart}
-              setCart={setCart}
-            />
-          ))}
+          <AppTools>
+            <Link to="/">
+              <IconArrow />
+            </Link>
+            <MenuSearch type="text" name="name" />
+            <IconSearch />
+          </AppTools>
+
+          <AppContainer>
+            <SucPromo>
+              <Slider />
+            </SucPromo>
+            {listProducts.map((item) => (
+              <Menu
+                key={item.id}
+                item={item}
+                listProducts={listProducts}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                cart={cart}
+                setCart={setCart}
+              />
+            ))}
+          </AppContainer>
+
           {cart.length === 0 ? null : (
             <FloatButton cart={cart} setCart={setCart} />
           )}
         </Route>
         <Route path="/formulario-burrico">
           <Form />
-					<Link to="/"><IconArrow /><p>Menú principal</p></Link>
+          <Link to="/" style={{textDecoration: 'none'}}>
+            <IconRetMenu />
+            <AppP>Menú principal</AppP>
+          </Link>
         </Route>
         <Route path="/">
           <Sucursales data={data} />
