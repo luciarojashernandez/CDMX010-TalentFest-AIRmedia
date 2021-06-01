@@ -20,10 +20,14 @@ import {
   IconDelete,
   ModalCartCount,
 	DivButtons,
+  ModalCountBtn
 } from "./ModalElements";
+
+
 function ModalCart({ cart, setCart }) {
   const dialog = useDialog();
   let total = 0;
+
   const [updatableCart, setUpdatableCart] = useState(cart);
   const calculeTotal = updatableCart.reduce(
     (sum, i) => sum + i.contador * i.price,
@@ -40,6 +44,22 @@ function ModalCart({ cart, setCart }) {
     // setCart(product)
     // console.log('product', product)
   };
+
+  //Contador de carrito
+  let counterItem = updatableCart.map((el) => el.contador);
+  const [counterCart, setCounterCart] = useState(counterItem);
+
+  //función sumar y restar de los botones
+  function sum() {
+    setCounterCart(Number(counterCart) + 1);
+  }
+  function subtraction() {
+    setCounterCart(
+      Number(counterCart) !== 0 ? Number(counterCart) - 1 : Number(counterCart)
+    );
+  }
+
+
   return (
     <ModalContainer>
       <br></br>      
@@ -63,7 +83,25 @@ function ModalCart({ cart, setCart }) {
               <IconDelete onClick={() => deleteProduct(elemento.id)}>
                 Borrar
               </IconDelete>
-              <ModalCartCount></ModalCartCount>
+              <ModalCartCount>
+              <ModalCountBtn
+                onClick={() => {
+                  // total();
+                  subtraction();
+                }}
+              >
+                -
+              </ModalCountBtn>
+              <div>{counterCart}</div>
+              <ModalCountBtn
+                onClick={() => {
+                  // total();
+                  sum();
+                }}
+              >
+                +
+              </ModalCountBtn>
+              </ModalCartCount>
               <ModalCartQty>Productos: {elemento.contador}</ModalCartQty>
             </ModalCartProduct>
           );
