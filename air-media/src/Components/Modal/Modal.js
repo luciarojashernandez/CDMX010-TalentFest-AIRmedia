@@ -15,36 +15,38 @@ function Modal({ item, cart, setCart }) {
   // Estado contador
   const [contador, setContador] = useState(1);
   const [comments, setComments] = useState("");
-	const [finalPrice, setFinalPrice] = useState(0);
-	// Precio final del pedido
-	function cartItems () {	
-		console.log(`new`, finalPrice)	
-		let productElement = item;
-		setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
-	}
+  const [finalPrice, setFinalPrice] = useState(0);
+  // Precio final del pedido
+  function cartItems() {
+    // console.log(`new`, finalPrice)
+    let productElement = item;
+    if (!cart.find((el) => el.product === productElement.product)) {
+      setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
+    }
+  }
   // Poblar el carrito
   //const cartItems = () => {
   //};
   // Funcionalidad del contador
   function sumar() {
     setContador(contador + 1);
-  };
+  }
   function restar() {
     setContador(contador !== 0 ? contador - 1 : contador);
-  };
-	// Agregar comentarios
+  }
+  // Agregar comentarios
   const handleComments = (event) => {
     setComments(event.target.value);
   };
   const addComments = () => {
     setComments("");
   };
-	// // Precio final del pedido
-	 function total () {		
-	 	setFinalPrice(item.price * (contador + 1))		
-	 }
-	console.log('finalprice', finalPrice)
-	console.log('precio final', item.price * contador)
+  // // Precio final del pedido
+  function total() {
+    setFinalPrice(item.price * (contador + 1));
+  }
+  console.log("finalprice", finalPrice);
+  console.log("precio final", item.price * contador);
   const dialog = useDialog();
   // const [value, setValue] = useState();
   return (
@@ -59,15 +61,29 @@ function Modal({ item, cart, setCart }) {
         id="comments"
       ></ModalInput>
       <ModalCount>
-        <ModalCountBtn onClick={() => {total(); restar()}}>-</ModalCountBtn>
+        <ModalCountBtn
+          onClick={() => {
+            total();
+            restar();
+          }}
+        >
+          -
+        </ModalCountBtn>
         <div>{contador}</div>
-        <ModalCountBtn onClick={() => {total(); sumar()}}>+</ModalCountBtn>
+        <ModalCountBtn
+          onClick={() => {
+            total();
+            sumar();
+          }}
+        >
+          +
+        </ModalCountBtn>
       </ModalCount>
       <ModalButton
         onClick={() => {
           // Сlose the dialog and return the value
           dialog.close();
-					//total ();
+          //total ();
           cartItems();
           addComments();
         }}

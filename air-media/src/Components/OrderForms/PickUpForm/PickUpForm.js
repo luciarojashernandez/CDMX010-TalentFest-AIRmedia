@@ -1,29 +1,36 @@
 //formulario para recoger
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 // import FormNav from "../../FormNav/FormNav";
 import {
-    FormDiv,
-    FormName,
-    FormDate,
-    SelectDate,
-    FormPhone,
-    FormComments
-  } from "../../../Pages/Form/FormElements";
-
+  FormDiv,
+  FormName,
+  FormDatePick,
+  SelectDatePick,
+  FormPhonePick,
+  FormCommentsPick,
+  FormBtnPick,
+  FormSubtotal,
+  FormEnv,
+} from "../../../Pages/Form/FormElements";
 const PickUpForm = () => {
-    return (
-        <Fragment>
-            {/* <FormNav /> */}
+  return (
+    <Fragment>
+      {/* <FormNav /> */}
       <FormDiv>
         <FormName type="text" name="name" placeholder="Nombre" />
-        <FormDate> Día y hora para recibir </FormDate>
-        <SelectDate type="datetime-local" />
-        <FormPhone type="text" name="phone" placeholder="Teléfono" />
-        <FormComments type="text" name="commments" placeholder="Comentarios" />
+        <FormDatePick> Día y hora para recibir </FormDatePick>
+        <SelectDatePick type="datetime-local" />
+        <FormPhonePick type="text" name="phone" placeholder="Teléfono" />
+        <FormCommentsPick
+          type="text"
+          name="commments"
+          placeholder="Comentarios"
+        />
+        <FormSubtotal>Subtotal $200MXN</FormSubtotal>
+        <FormEnv>Costo de envio $0MXN</FormEnv>
       </FormDiv>
-      <button>Confirmar pedido</button>
-        </Fragment>
-    );
-}
-
+      <FormBtnPick>Confirmar pedido</FormBtnPick>
+    </Fragment>
+  );
+};
 export default PickUpForm;
