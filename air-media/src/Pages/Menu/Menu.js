@@ -140,7 +140,7 @@ console.log("precio final", item.price * contador);
 
         <Modal show={show} onHide={handleClose} animation={true}>
 
-        <Modal.Body>
+        <Modal.Body sty>
         <ModalImgContainer src={image} alt="img"></ModalImgContainer>
       <ModalH2>{product}</ModalH2>
       <ModalP>{description}</ModalP>
@@ -169,6 +169,7 @@ console.log("precio final", item.price * contador);
       </ModalCount>
         
         </Modal.Body>
+        
         <Modal.Footer>
           <ModalButton variant="secondary" onClick={() => {
             handleClose();
@@ -177,8 +178,8 @@ console.log("precio final", item.price * contador);
           }}>
              Agregar producto
           </ModalButton>
-
         </Modal.Footer>
+        
       </Modal>
       </ModalContainer>
       

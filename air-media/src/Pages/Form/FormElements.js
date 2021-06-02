@@ -15,18 +15,19 @@ export const FormRequestBtn = styled.button`
   position: absolute;
   width: 140px;
   height: 32px;
-  color: black;
   margin-left: 30px;
-  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 15px;
   background: none;
   cursor: pointer;
-  &:hover {
-    color: white;
+  color: white;
     border: none;
     background: #e85d17;
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
+  &:hover {
+    color: black;
+    border: 2px solid #e85d17;
+    background: none;
   }
 `;
 export const FormPickUpBtn = styled.button`

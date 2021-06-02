@@ -89,7 +89,7 @@ const FloatButton = ({
     {/* <br></br>      
 			<h1>Pedido</h1> */}
       <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header>
           <Modal.Title>Pedido</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -139,7 +139,6 @@ const FloatButton = ({
         <ModalSubtotal>SubTotal:{total}</ModalSubtotal>
       </ModalCartContainer>
         </Modal.Body>
-        <Modal.Footer>
           <DivButtons>
       <ModalCartBtns>
         <ModalBtnCancel
@@ -152,7 +151,6 @@ const FloatButton = ({
         </Link>
       </ModalCartBtns>
 			</DivButtons>	
-        </Modal.Footer>
       </Modal>
     </ModalContainer>
     

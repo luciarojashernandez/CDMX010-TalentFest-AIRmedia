@@ -10,8 +10,8 @@ import {
   DeliveryDiv,
   DeliveryName,
   DeliveryAdress,
-  DeliveryDate,
   SelectDate,
+  DeliveryInfo,
   DeliveryPay,
   DeliveryRadio,
   DeliveryInput,
@@ -20,11 +20,13 @@ import {
   FormBtnDelivery,
   DeliverySubtotal,
   DeliveryEnv,
+  DeliveryCost,
+  DeliveryTotal,
   Date,
   Hour
 } from "./DeliveryElements";
 
-const DeliveryForm = ({cart, setCart}) => {
+const DeliveryForm = ({cart, setCart, total, setTotal}) => {
  console.log('cartdelivery', cart)
 	console.log('cart', cart)
 	//FORM STATE
@@ -64,107 +66,56 @@ const DeliveryForm = ({cart, setCart}) => {
     });
   };
 
-	const getProduct = (cart) => {
-		let message = "¡Hola Burri.Co! quiero ordenar:";
-		let num = "número de productos";
-
-
-		let product = cart.map ((product) => product.product )
-		let contador = cart.map ((product) => product.contador)
-		let subTotal = cart.map ((product) => product.finalPrice)
-
-		console.log('orden', product)
-		console.log('orden', contador)
-		// console.log('orden', finalPrice)
-		
-		let orden = message + ' ' + product + ' ' + num + ' ' + contador + subTotal
-		console.log('ordenFinal', orden)
-		// sendData(orden)
-	}
-	getProduct(cart)
-
-	const sendData = (e) => {
-
-		// const getProduct = (cart) => {
-		// 	let message = "¡Hola Burri.Co! quiero ordenar:";
-		// let num = "número de productos";
-
-
-		// let product = cart.map ((product) => product.product )
-		// let contador = cart.map ((product) => product.contador)
-		// let subTotal = cart.map ((product) => product.finalPrice)
-
-		// console.log('orden', product)
-		// console.log('orden', contador)
-		// // console.log('orden', finalPrice)
-		
-		// let orden = message + ' ' + product + ' ' + num + ' ' + contador + subTotal
-		// console.log('ordenFinal', orden)
-			
-		// }
-		// console.log('hola', getProduct)
-		// console.log('orden de funcion', orden)
-	
-    //evitar el envío automático
+  //WA FUNCTION
+  function Whatsapp(e) {
     e.preventDefault();
-		// let restaurantNumber = 525531345330;
-		let message = "¡Hola Burri.Co! quiero ordenar:";
-		let destinatary = " a nombre de:";
-		let address = "con punto de entrega en:"
-		let pay = "mi pago es:"
-		let phone = "mi número es:"		
-		let time = "a las:"
-		let date = "del:"
-    let urlData = message + ' ' 
-				+ cart + ' ' + destinatary + ' ' +
-				dataClient.name +
+    let restaurantNumber = 525531345330;
+    let product = cart.map ((product) => product.product )
+    let contador = cart.map ((product) => product.contador)
+    let subTotal = total;
+    let message = "¡Hola Burri.Co! mi pedido es el siguiente:";
+    let destinatary = ". Es a nombre de:";
+    let address = ". La dirección de entrega es:";
+    let pay = ". Mi tipo de pago es:";
+    let phone = ". Mi número de contacto es:" ; 
+    let time = ". Quiero recibirlo a las:";
+    let date = ", del:";
+    let comentario = ". Comentarios extra:";
+    let numProduct = ". Número de productos";
+    let subtotal = ". Subtotal:";
+    let totalCart = ". Total:";
+    let concatenar = message + ' ' 
+        + product + ' ' + destinatary + ' ' +
+        dataClient.name +
         " " + address + ' ' +
         dataClient.adress +
         " " + time + ' ' +
         dataClient.hour +
         " " + date + ' ' +
-				dataClient.date +
+        dataClient.date +
         " " + pay + ' ' +
         dataClient.pagoEfectivo +
         " " +
         dataClient.pagoLinea +
         " " + phone + ' ' +
         dataClient.phone +
-        " " +
+        " " +comentario + ' '+
         dataClient.commments +
-        " " +
-        dataClient.subtotal +
-        " " +
-        dataClient.total
-			
-				console.log(urlData.replace(/\s/gi, "%20"))
-    ;
-  };
-
-
-
-  //WA FUNCTION
-  function Whatsapp() {
-    let restaurantNumber = 525531345330;
-
-    // Info del cliente
-    let cart = "1-hamburgesa-100,2-malteadas-500";
-    let clientName = "Alejandra Garcia";
-    let direccion = "San Miguel De Allende";
-    let message = "¡Bienvenido a DARKITCHENS! Tu pedido actual es:";
-		let destinatary = " A nombre de:";
-		let address = "Con punto de entrega en:"
-
-    // Concatenación
-    let concatenar = message + '' + cart + ';' + destinatary + ' ' + clientName + ';' + ' ' + address + ' ' + direccion;
-
+        " " + numProduct + ' '+
+        contador+
+        " " +subtotal+' '+
+        subTotal +
+        " " + totalCart +
+        subTotal + 30
+      console.log(concatenar, 'conca');
+        console.log(concatenar.replace(/\s/gi, "%20"))
     // Modificando espacios en blanco
     let remplazandoEspacios = concatenar.replace(/\s/gi, "%20");
     console.log("remplazarEspaciosURL", remplazandoEspacios);
     let url = `https://wa.me/${restaurantNumber}?text=${remplazandoEspacios}`;
     console.log("url final", url);
   }
-  Whatsapp();
+  
 
   return (
 		<Fragment>
@@ -172,13 +123,15 @@ const DeliveryForm = ({cart, setCart}) => {
 					<IconReturn />
 					<DeliveryP>Menú principal</DeliveryP>
 				</Link>
-		<form onSubmit={sendData}>
+		<form onSubmit={Whatsapp}>
 		<DeliveryDiv>
 			<DeliveryName type="text" name="name" placeholder="Nombre" onChange={handleInputChange}/>
 			<DeliveryAdress type="text" name="adress" placeholder="Domicilio" onChange={handleInputChange}/>
-			<DeliveryDate name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></DeliveryDate>
-			<Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
-			<DeliveryPay> Forma de pago </DeliveryPay>
+        <DeliveryInfo>
+          <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
+			    <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+        </DeliveryInfo>
+        <DeliveryPay> Forma de pago </DeliveryPay>
 			<DeliveryRadio>
 				<DeliveryInput type="radio" value="Efectivo" name="pagoEfectivo" onChange={handleInputChange} />
 				<label for="huey">Efectivo</label>
@@ -187,12 +140,16 @@ const DeliveryForm = ({cart, setCart}) => {
 			</DeliveryRadio>
 			<DeliveryPhone type="text" name="phone" placeholder="Teléfono" onChange={handleInputChange} />
 			<DeliveryComments type="text" name="commments" placeholder="Comentarios" onChange={handleInputChange}/>
-			<DeliverySubtotal type="number" name="subtotal">
-					Subtotal ${0}MXN
+			<DeliveryCost>
+        <DeliverySubtotal type="number" name="subtotal">
+					Subtotal: ${total}MXN
 				</DeliverySubtotal>
 				<DeliveryEnv type="number" name="envio">
-					Costo de envío ${30}MXN
+					Costo de envío: ${30}MXN
 				</DeliveryEnv>
+       <DeliveryTotal type="number" name="total">Total: ${total+30}MXN</DeliveryTotal>
+      </DeliveryCost>
+      
 				{/* <h2 type="number" name="total">Total: ${0}</h2> */}
 		</DeliveryDiv>
 		<FormBtnDelivery type="submit" >Confirmar pedido</FormBtnDelivery>

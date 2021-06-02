@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import { FiChevronLeft } from "react-icons/fi";
+
 export const IconReturn = styled(FiChevronLeft)`
-    font-size: 2rem;
-    transform: translate(50%, -15%);
-    margin-top: 150px;
-    color: #E85D17;
-    margin-left: 0px;
-    position: absolute;
+  font-size: 2rem;
+  transform: translate(50%, -15%);
+  margin-top: 150px;
+  color: #e85d17;
+  margin-left: 0px;
+  position: absolute;
 `;
 export const DeliveryP = styled.p`
-    color: #E85D17; 
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 150px;
-    margin-left:55px;
-    border:none;
+  color: #e85d17;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 150px;
+  margin-left: 55px;
+  border: none;
 `;
 export const DeliveryDiv = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ export const DeliveryName = styled.input`
   height: 44px;
   left: 25px;
   top: 280px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -35,7 +36,7 @@ export const DeliveryName = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
@@ -47,7 +48,7 @@ export const DeliveryAdress = styled.input`
   height: 44px;
   left: 25px;
   top: 340px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -55,24 +56,27 @@ export const DeliveryAdress = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
   }
 `;
-export const DeliveryDate = styled.p`
-  padding-left: 30px;
-  margin-top: 195px;
-  font-weight: bold;
+export const DeliveryInfo = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 320px;
+  margin-left: -5px;
+  margin-top: 170px;
 `;
 export const DeliveryPay = styled.p`
-  padding-left: 30px;
-  margin-top: 48px;
+  padding-left: 5px;
+  margin-top: 68px;
   font-weight: bold;
 `;
 export const DeliveryRadio = styled.div`
-  margin-left: 15px;
+  margin-left: 25px;
+  margin-top: 10px;
 `;
 export const FormBtns = styled.div`
   position: absolute;
@@ -90,7 +94,7 @@ export const FormRequestBtn = styled.button`
   height: 32px;
   color: black;
   margin-left: 30px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 15px;
   background: none;
@@ -98,7 +102,7 @@ export const FormRequestBtn = styled.button`
   &:hover {
     color: white;
     border: none;
-    background: #E85D17;
+    background: #e85d17;
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   }
 `;
@@ -108,7 +112,7 @@ export const FormPickUpBtn = styled.button`
   height: 32px;
   margin-left: 190px;
   color: black;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 15px;
   background: none;
@@ -116,7 +120,7 @@ export const FormPickUpBtn = styled.button`
   &:hover {
     color: white;
     border: none;
-    background: #E85D17;
+    background: #e85d17;
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   }
 `;
@@ -126,7 +130,7 @@ export const SelectDate = styled.input`
   height: 44px;
   left: 25px;
   top: 430px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -134,11 +138,11 @@ export const SelectDate = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
 `;
 export const DeliveryInput = styled.input`
-  margin-left: 20px;
+  margin-left: 30px;
 `;
 export const DeliveryComments = styled.input`
   position: absolute;
@@ -147,7 +151,7 @@ export const DeliveryComments = styled.input`
   left: 25px;
   top: 620px;
   bottom: 150px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -155,7 +159,7 @@ export const DeliveryComments = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
@@ -167,7 +171,7 @@ export const DeliveryPhone = styled.input`
   height: 44px;
   left: 25px;
   top: 560px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -175,7 +179,7 @@ export const DeliveryPhone = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
@@ -185,12 +189,11 @@ export const FormBtnDelivery = styled.button`
   width: 259px;
   height: 33px;
   margin: 50px;
-  top: 130px;
   margin-bottom: 55px;
   border: none;
   color: white;
-  margin-top: 175px;
-  background: #1BD741;
+  margin-top: 30px;
+  background: #1bd741;
   border-radius: 15px;
   &:hover {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -207,7 +210,7 @@ export const SelectDatePick = styled.input`
   height: 44px;
   left: 25px;
   top: 370px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -215,7 +218,7 @@ export const SelectDatePick = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
 `;
 export const FormPhonePick = styled.input`
@@ -224,7 +227,7 @@ export const FormPhonePick = styled.input`
   height: 44px;
   left: 25px;
   top: 430px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -232,7 +235,7 @@ export const FormPhonePick = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
@@ -245,7 +248,7 @@ export const FormCommentsPick = styled.input`
   left: 25px;
   top: 490px;
   bottom: 150px;
-  border: 2px solid #E85D17;
+  border: 2px solid #e85d17;
   box-sizing: border-box;
   border-radius: 10px;
   outline: none;
@@ -253,7 +256,7 @@ export const FormCommentsPick = styled.input`
     width: 180%;
     left: -142px;
     top: 120px;
-    border: 3px solid #E85D17;
+    border: 3px solid #e85d17;
   }
   ::placeholder {
     padding-left: 5px;
@@ -268,36 +271,56 @@ export const FormBtnPick = styled.button`
   margin-bottom: 155px;
   border: none;
   color: white;
-  background: #1BD741;
+  background: #1bd741;
   border-radius: 15px;
   &:hover {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 `;
 export const DeliverySubtotal = styled.p`
-  position: relative;
+// position: absolute;
+// top: 210px;
+// left: 120px;
   font-size: 15px;
   color: grey;
-  top: 210px;
-  left: 120px;
   font-weight: bold;
 `;
 export const DeliveryEnv = styled.p`
-  position: relative;
+  // position: absolute;
+  // top: 110px;
+  // left: 80px;
   font-size: 15px;
   color: grey;
-  top: 110px;
-  left: 100px;
+  
   font-weight: bold;
 `;
 export const Date = styled.input`
-color: grey;
-position: relative;
-top: 50px;
+  color: grey;
+  position: relative;
+  top: 50px;
 `;
 export const Hour = styled.input`
-color: grey;
-top: 50px;
-position: relative;
+  color: grey;
+  top: 50px;
+  position: relative;
 `;
 
+export const DeliveryCost = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: space-between;
+  text-align: center;
+  margin-top: 180px;
+  left: -20px;
+`;
+
+export const DeliveryTotal = styled.p`
+// position: absolute;
+// top: 110px;
+// left: 80px;
+font-size: 20px;
+color: grey;
+margin-top:10px;
+font-weight: bold;
+`;
