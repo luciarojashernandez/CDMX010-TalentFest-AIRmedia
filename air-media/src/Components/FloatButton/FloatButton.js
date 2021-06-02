@@ -25,7 +25,13 @@ import {
   ModalCountBtn
 } from "../../Components/Modal/ModalElements";
 
-const FloatButton = ({cart, setCart}) => {
+const FloatButton = ({
+  cart, 
+  setCart, 
+  total, 
+  setTotal 
+  //contol z
+}) => {
 
 	const condition = true;
 	const [show, setShow] = useState(false);
@@ -33,35 +39,43 @@ const FloatButton = ({cart, setCart}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [updatableCart, setUpdatableCart] = useState(cart);
-  const calculeTotal = updatableCart.reduce(
-    (sum, i) => sum + i.contador * i.price,
-    0
-  );
+  function calculeTotal (items) {
+    return items.reduce(
+      (sum, i) => sum + i.contador * i.price,
+      0
+    );
+  } 
+  
   const deleteProduct = (id) => {
-    const product = updatableCart.filter((item) => {
+    
+    const newCart = cart.filter((item) => {
       return item.id !== id;
     });
-    setCart(product);
-    setUpdatableCart(product);
-    // console.log('item', item.id)
-    // let product = cart.splice(item => item.id !== cartId)
-    // setCart(product)
-    // console.log('product', product)
+    setCart(newCart);
+    setTotal(calculeTotal(newCart));
   };
 
-  //Contador de carrito
-  let counterItem = updatableCart.map((el) => el.contador);
-  const [counterCart, setCounterCart] = useState(counterItem);
-
   //función sumar y restar de los botones
-  function sum() {
-    setCounterCart(Number(counterCart) + 1);
+  function sum(oldItem) {
+    const newItems = cart.map(item => item.id === oldItem.id 
+      ? {...item, contador: 1 + item.contador, finalPrice: item.price * (1 + item.contador) }
+      : item 
+    )
+    setCart(newItems);
+    setTotal(calculeTotal(newItems))
   }
-  function subtraction() {
-    setCounterCart(
-      Number(counterCart) !== 0 ? Number(counterCart) - 1 : Number(counterCart)
-    );
+  
+  function subtraction(oldItem) {
+    if (oldItem.contador === 1) {
+      deleteProduct(oldItem.id)
+    } else {
+      const newItems = cart.map(item => item.id === oldItem.id 
+        ? {...item, contador: item.contador -1, finalPrice: item.price * (item.contador -1) }
+        : item 
+      )
+      setCart(newItems);
+      setTotal(calculeTotal(newItems))
+    }
   }
   
 	return (
@@ -102,27 +116,27 @@ const FloatButton = ({cart, setCart}) => {
               <ModalCountBtn
                 onClick={() => {
                   // total();
-                  subtraction();
+                  subtraction(elemento);
                 }}
               >
                 -
               </ModalCountBtn>
-              <div>{counterCart}</div>
+              <div>{elemento.contador}</div>
               <ModalCountBtn
                 onClick={() => {
                   // total();
-                  sum();
+                  sum(elemento);
                 }}
               >
                 +
               </ModalCountBtn>
               </ModalCartCount>
-              <ModalCartQty>Productos: {elemento.contador}</ModalCartQty>
+              {/* <ModalCartQty>Productos: {elemento.contador}</ModalCartQty> */}
             </ModalCartProduct>
           );
         })}
         <ModalCartInput placeholder="Comentarios adicionales"></ModalCartInput>
-        <ModalSubtotal>SubTotal:{calculeTotal.toFixed(2)}</ModalSubtotal>
+        <ModalSubtotal>SubTotal:{total}</ModalSubtotal>
       </ModalCartContainer>
         </Modal.Body>
         <Modal.Footer>

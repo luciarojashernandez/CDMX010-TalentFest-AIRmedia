@@ -12,11 +12,13 @@ export const ModalImgContainer = styled.img`
   height: auto;
   border-radius: 20px;
   top: 20px;
+	margin-left: 23px;
 `;
 export const ModalH2 = styled.h2`
   position: relative;
   display: block;
   top: 30px;
+	text-align: center;
 `;
 export const ModalH4 = styled.h4`
   position: relative;
@@ -25,11 +27,17 @@ export const ModalH4 = styled.h4`
   border-radius: 20px;
   color: white;
   font-size: 15px;
-  padding: 5px;
+  padding-top: 5px;
+	width: 100px;
+	padding-left: 17px;
+	padding-bottom: 5px;
+	margin-left: 110px;
+	margin-bottom: 15px;
 `;
 export const ModalP = styled.p`
   width: 264px;
-  margin-top: 32px;
+  margin-top: 37px;
+	margin-left: 36px;
 `;
 export const ModalInput = styled.input`
   position: relative;
@@ -38,10 +46,15 @@ export const ModalInput = styled.input`
   border: 2px solid #E85D17;
   box-sizing: border-box;
   border-radius: 10px;
+	margin-left: 30px;
+	align-items: center;
 	outline: none;
   ::placeholder {
     padding: 5px;
   }
+`;
+export const DivButton = styled.div`
+	margin-left: 50px;
 `;
 export const ModalButton = styled.button`
   position: relative;
@@ -51,9 +64,10 @@ export const ModalButton = styled.button`
   border: none;
   background: #E85D17;
   cursor: pointer;
-  top: 45px;
-  margin-bottom: 60px;
+  top: 9px;
+  margin-bottom: 12px;
   border-radius: 15px;
+	left: -20px;
   box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   &:hover {
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
@@ -66,10 +80,11 @@ export const ModalCount = styled.div`
   align-items: center;
   width: 117px;
   height: 30px;
-  top: 25px;
+  top: 20px;
   color: white;
   background: #E85D17;
   border-radius: 20px;
+	margin-left: 100px;
 `;
 export const ModalCountBtn = styled.button`
   background: transparent;
@@ -159,11 +174,12 @@ export const ModalCartBtns = styled.div`
   flex-direction: row;
   width: 320px;
   justify-content: space-around;
-  margin-top: 110px;  
+  margin-rigth: 50px;
   z-index: 2;
   position: fixed;
-  top: 330px;
-  height: 120px;
+  top: 490px;
+	left: 20px;
+  height: 70px;
 	background: white;
 `;
 export const ModalBtnCancel = styled.button`
@@ -225,6 +241,7 @@ export const IconDelete = styled(RiDeleteBin6Line)`
 export const ModalCartContainer = styled.div`
   displya: flex;  
   margin-bottom: 100px;	
+	overflow: scroll;
 `;
 export const DivButtons = styled.div`
 display: flex;
@@ -232,6 +249,7 @@ flex-direction: column;
 align-items: center;
 paddig-top: 0px;
 position: absolute;
+margin-rigth: 50px;
 `;
 // .fullscreen-modal .modal-dialog {
 //     margin: 0;

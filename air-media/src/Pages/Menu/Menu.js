@@ -27,6 +27,8 @@ const Menu = ({
   item,
   cart,
   setCart,
+  //hasta aqui control z
+  setTotal
 }) => {
   //constante que guarda las propiedades del estado de los items
   const { product, price, description, image, id } = item;
@@ -39,37 +41,79 @@ const Menu = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
+  function calculeTotal (items) {
+    return items.reduce(
+      (sum, i) => sum + i.contador * i.price,
+      0
+    );
+  }
     // Precio final del pedido
+    // function cartItems() {
+    //   // console.log(`new`, finalPrice)
+    //   let productElement = item;
+    //   if (!cart.find((el) => el.product === productElement.product)) {
+    //     setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
+    //   }
+    // }
+
     function cartItems() {
       // console.log(`new`, finalPrice)
       let productElement = item;
-      if (!cart.find((el) => el.product === productElement.product)) {
-        setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
+      const foundItem = cart.find((el) => el.product === productElement.product)
+      if (!foundItem) {
+        const newItems = [...cart, { ...productElement, contador, comments, finalPrice: productElement.price * contador }]
+        setCart(newItems);
+        setTotal(calculeTotal(newItems))
+      } else {
+        const newItems = cart.map(item => item.product === productElement.product 
+          ? {...item, contador: contador + item.contador, finalPrice: item.price * (contador + item.contador) }
+          : item 
+        )
+        setCart(newItems);
+        setTotal(calculeTotal(newItems))
       }
     }
 
-    function sumar() {
-      setContador(contador + 1);
-    }
-    function restar() {
-      setContador(contador !== 0 ? contador - 1 : contador);
-    }
-    // Agregar comentarios
-    const handleComments = (event) => {
-      setComments(event.target.value);
-    };
-    const addComments = () => {
-      setComments("");
-    };
-    // // Precio final del pedido
-    function total() {
-      setFinalPrice(item.price * (contador + 1));
-    }
-    console.log("finalprice", finalPrice);
-    console.log("precio final", item.price * contador);
 
+    // function sumar() {
+    //   setContador(contador + 1);
+    // }
+    // function restar() {
+    //   setContador(contador !== 0 ? contador - 1 : contador);
+    // }
+    // // Agregar comentarios
+    // const handleComments = (event) => {
+    //   setComments(event.target.value);
+    // };
+    // const addComments = () => {
+    //   setComments("");
+    // };
+    // // // Precio final del pedido
+    // function total() {
+    //   setFinalPrice(item.price * (contador + 1));
+    // }
+    // console.log("finalprice", finalPrice);
+    // console.log("precio final", item.price * contador);
 
+// Funcionalidad del contador
+function sumar() {
+  setContador(contador + 1);
+}
+function restar() {
+  setContador(contador !== 0 ? contador - 1 : contador);
+}
+// Agregar comentarios
+const handleComments = (event) => {
+  setComments(event.target.value);
+};
+const addComments = () => {
+  setComments("");
+};
+// // Precio final del pedido
+
+console.log("precio final", item.price * contador);
+
+// const [value, setValue] = useState();
 
   return (
     <MenuContent>
@@ -109,7 +153,6 @@ const Menu = ({
   <ModalCount>
         <ModalCountBtn
           onClick={() => {
-            total();
             restar();
           }}
         >
@@ -118,7 +161,6 @@ const Menu = ({
         <div>{contador}</div>
         <ModalCountBtn
           onClick={() => {
-            total();
             sumar();
           }}
         >

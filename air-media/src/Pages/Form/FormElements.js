@@ -274,3 +274,9 @@ export const FormEnv = styled.p`
   left: 100px;
   font-weight: bold;
 `;
+export const Date = styled.input`
+color: grey;
+`;
+export const Hour = styled.input`
+color: grey;
+`;

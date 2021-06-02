@@ -11,9 +11,12 @@ import {
   FormBtnPick,
   FormSubtotal,
   FormEnv,
+  Date,
+  Hour
 } from "../../../Pages/Form/FormElements";
 
-const PickUpForm = () => {
+const PickUpForm = ({cart, setCart}) => {
+  console.log('cartpickup', cart)
   //FORM STATE
   //Se crea un estado vacío para ir llenando
   const [dataClient, setDataClient] = useState({
@@ -70,14 +73,16 @@ const PickUpForm = () => {
         dataClient.total
     );
   };
+  console.log(sendData)
 
   return (
     <Fragment>
       <form onSubmit={sendData}>
         <FormDiv>
           <FormName type="text" name="name" placeholder="Nombre" onChange={handleInputChange} />
-          <FormDatePick> Día y hora para recibir </FormDatePick>
-          <SelectDatePick type="datetime-local" name="date" onChange={handleInputChange} />
+          <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
+          <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+          
           <FormPhonePick type="text" name="phone" placeholder="Teléfono" onChange={handleInputChange}  />
           <FormCommentsPick
             type="text"

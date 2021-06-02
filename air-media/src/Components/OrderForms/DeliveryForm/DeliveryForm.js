@@ -17,12 +17,12 @@ import {
   FormBtnDelivery,
   FormSubtotal,
   FormEnv,
+  Date,
+  Hour
 } from "../../../Pages/Form/FormElements";
 
-const DeliveryForm = () => {
-//DATE & HOUR FUNCTION
-  const [value, onChange] = useState('10:00');
-  const [selectedDate, setSelectedDate] = useState(null);  
+const DeliveryForm = ({cart, setCart}) => {
+ console.log('cartdelivery', cart)
 
 //FORM STATE
    //Se crea un estado vacío para ir llenando
@@ -111,24 +111,9 @@ const DeliveryForm = () => {
       <FormDiv>
         <FormName type="text" name="name" placeholder="Nombre" onChange={handleInputChange}/>
         <FormAdress type="text" name="adress" placeholder="Domicilio" onChange={handleInputChange}/>
-        {/* <FormDate> Día y hora para recibir </FormDate>
-        <SelectDate type="datetime-local" /> */}
-        <DatePicker
-         name="date"
-         selected={selectedDate}
-         onChange={date => setSelectedDate(date)}
-         placeholderText='dd/mm/aaaa'
-         minDate={new Date()}
-         filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
-         isClearable
-         dateFormat="dd/MM/yyyy"     
-         />
-         <TimePicker
-        name="hour"
-         onChange={onChange}
-         value={value}
-         minutePlaceholder="h:mm"
-        />
+        <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
+        <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+          
         <FormPay> Forma de pago </FormPay>
         <FormRadio>
           <FormInput type="radio" value="Efectivo" name="pagoEfectivo" onChange={handleInputChange} />

@@ -20,7 +20,7 @@ function Form({cart, setCart}) {
         </FormRequestBtn>
         <FormPickUpBtn onClick={handleSetPickUp}>Recoger pedido</FormPickUpBtn>
       </FormBtns>
-      {deliveryForm ? <DeliveryForm /> : <PickUpForm />}
+      {deliveryForm ? <DeliveryForm cart={cart} setCart={setCart}/> : <PickUpForm cart={cart} setCart={setCart}/>}
     </Fragment>
   );
 }
