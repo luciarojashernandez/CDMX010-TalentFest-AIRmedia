@@ -13,7 +13,9 @@ import {
   FormEnv,
 } from "../../../Pages/Form/FormElements";
 
-const PickUpForm = () => {
+const PickUpForm = (cart, setCart, item) => {
+
+  console.log(cart, 'cart en form');
   //FORM STATE
   //Se crea un estado vacío para ir llenando
   const [dataClient, setDataClient] = useState({

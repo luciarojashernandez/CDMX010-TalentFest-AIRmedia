@@ -11,21 +11,42 @@ import {
   ModalCount,
   ModalCountBtn,
 } from "./ModalElements";
-function Modal({ item, cart, setCart }) {
+function Modal({ item, cart, setCart, setTotal }) {
   // Estado contador
   const [contador, setContador] = useState(1);
   const [comments, setComments] = useState("");
-  const [finalPrice, setFinalPrice] = useState(0);
+  // const [finalPrice, setFinalPrice] = useState(0);
   // Precio final del pedido
+
+  // function totalItem(item, quantity) {
+  //   return (item.price * quantity);
+  // }
+  function calculeTotal (items) {
+    return items.reduce(
+      (sum, i) => sum + i.contador * i.price,
+      0
+    );
+  }
+
   function cartItems() {
     // console.log(`new`, finalPrice)
     let productElement = item;
-    if (!cart.find((el) => el.product === productElement.product)) {
-      setCart([...cart, { ...productElement, contador, comments, finalPrice }]);
+    const foundItem = cart.find((el) => el.product === productElement.product)
+    if (!foundItem) {
+      const newItems = [...cart, { ...productElement, contador, comments, finalPrice: productElement.price * contador }]
+      setCart(newItems);
+      setTotal(calculeTotal(newItems))
+    } else {
+      const newItems = cart.map(item => item.product === productElement.product 
+        ? {...item, contador: contador + item.contador, finalPrice: item.price * (contador + item.contador) }
+        : item 
+      )
+      setCart(newItems);
+      setTotal(calculeTotal(newItems))
     }
   }
   // Poblar el carrito
-  //const cartItems = () => {
+  //const cartItems = () => {   
   //};
   // Funcionalidad del contador
   function sumar() {
@@ -42,10 +63,7 @@ function Modal({ item, cart, setCart }) {
     setComments("");
   };
   // // Precio final del pedido
-  function total() {
-    setFinalPrice(item.price * (contador + 1));
-  }
-  console.log("finalprice", finalPrice);
+  
   console.log("precio final", item.price * contador);
   const dialog = useDialog();
   // const [value, setValue] = useState();
@@ -63,7 +81,6 @@ function Modal({ item, cart, setCart }) {
       <ModalCount>
         <ModalCountBtn
           onClick={() => {
-            total();
             restar();
           }}
         >
@@ -72,7 +89,6 @@ function Modal({ item, cart, setCart }) {
         <div>{contador}</div>
         <ModalCountBtn
           onClick={() => {
-            total();
             sumar();
           }}
         >

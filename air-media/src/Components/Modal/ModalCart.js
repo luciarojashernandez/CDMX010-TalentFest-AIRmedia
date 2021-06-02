@@ -1,6 +1,6 @@
 import { useDialog } from "react-st-modal";
-import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import React from "react";
+import {  useHistory } from "react-router-dom";
 import Form from "../../Pages/Form/Form";
 import {
   ModalContainer,
@@ -24,21 +24,24 @@ import {
 } from "./ModalElements";
 
 
-function ModalCart({ cart, setCart }) {
+function ModalCart({ cart, setCart, total, setTotal, history }) {
   const dialog = useDialog();
-  let total = 0;
 
-  const [updatableCart, setUpdatableCart] = useState(cart);
-  const calculeTotal = updatableCart.reduce(
-    (sum, i) => sum + i.contador * i.price,
-    0
-  );
+  function calculeTotal (items) {
+    return items.reduce(
+      (sum, i) => sum + i.contador * i.price,
+      0
+    );
+  } 
+
   const deleteProduct = (id) => {
-    const product = updatableCart.filter((item) => {
+    console.log('deelteProduct', id)
+    const newCart = cart.filter((item) => {
       return item.id !== id;
     });
-    setCart(product);
-    setUpdatableCart(product);
+    setCart(newCart);
+    setTotal(calculeTotal(newCart))
+    
     // console.log('item', item.id)
     // let product = cart.splice(item => item.id !== cartId)
     // setCart(product)
@@ -46,17 +49,28 @@ function ModalCart({ cart, setCart }) {
   };
 
   //Contador de carrito
-  let counterItem = updatableCart.map((el) => el.contador);
-  const [counterCart, setCounterCart] = useState(counterItem);
 
   //función sumar y restar de los botones
-  function sum() {
-    setCounterCart(Number(counterCart) + 1);
+  function sum(oldItem) {
+    const newItems = cart.map(item => item.id === oldItem.id 
+      ? {...item, contador: 1 + item.contador, finalPrice: item.price * (1 + item.contador) }
+      : item 
+    )
+    setCart(newItems);
+    setTotal(calculeTotal(newItems))
   }
-  function subtraction() {
-    setCounterCart(
-      Number(counterCart) !== 0 ? Number(counterCart) - 1 : Number(counterCart)
-    );
+  
+  function subtraction(oldItem) {
+    if (oldItem.contador === 1) {
+      deleteProduct(oldItem.id)
+    } else {
+      const newItems = cart.map(item => item.id === oldItem.id 
+        ? {...item, contador: item.contador -1, finalPrice: item.price * (item.contador -1) }
+        : item 
+      )
+      setCart(newItems);
+      setTotal(calculeTotal(newItems))
+    }
   }
 
 
@@ -65,10 +79,10 @@ function ModalCart({ cart, setCart }) {
       <br></br>      
 			<h1>Pedido</h1>		
       <ModalCartContainer>
-        {updatableCart.map((elemento) => {
+        {console.log('items', cart) || cart.map((elemento) => {
           // {total += item.contador * item.price}
           return (
-            <ModalCartProduct key={elemento.id}>
+            <ModalCartProduct key={elemento.product}>
               <ModalCartImage src={elemento.image} alt={elemento.id} />
               <ModalCartP>{elemento.product}</ModalCartP>
               <ModalCartDescripcion>
@@ -87,27 +101,26 @@ function ModalCart({ cart, setCart }) {
               <ModalCountBtn
                 onClick={() => {
                   // total();
-                  subtraction();
+                  subtraction(elemento);
                 }}
               >
                 -
               </ModalCountBtn>
-              <div>{counterCart}</div>
+              <div>{elemento.contador}</div>
               <ModalCountBtn
                 onClick={() => {
                   // total();
-                  sum();
+                  sum(elemento);
                 }}
               >
                 +
               </ModalCountBtn>
               </ModalCartCount>
-              <ModalCartQty>Productos: {elemento.contador}</ModalCartQty>
             </ModalCartProduct>
           );
         })}
         <ModalCartInput placeholder="Comentarios adicionales"></ModalCartInput>
-        <ModalSubtotal>SubTotal:{calculeTotal.toFixed(2)}</ModalSubtotal>
+        <ModalSubtotal>SubTotal:{total}</ModalSubtotal>
       </ModalCartContainer>
 			<DivButtons>
       <ModalCartBtns>
@@ -119,9 +132,7 @@ function ModalCart({ cart, setCart }) {
         >
           Cancelar
         </ModalBtnCancel>
-        <a href="/formulario-burrico">
-          <ModalBtnContinue>Continuar</ModalBtnContinue>
-        </a>
+          <ModalBtnContinue onClick={() => history.push('/formulario-burrico')}>Continuar</ModalBtnContinue>
       </ModalCartBtns>
 			</DivButtons>	
     </ModalContainer>

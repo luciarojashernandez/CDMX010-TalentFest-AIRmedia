@@ -18,6 +18,8 @@ const Menu = ({
   setShowModal,
   cart,
   setCart,
+  total,
+  setTotal
 }) => {
   //constante que guarda las propiedades del estado de los items
   const { product, price, description, image, id } = item;
@@ -26,7 +28,7 @@ const Menu = ({
     <MenuContent>
       <ProductButton onClick={async () => {
       const result = await CustomDialog(
-        <Modal item={item} cart={cart} setCart={setCart}/>,
+        <Modal item={item} cart={cart} setCart={setCart} setTotal={setTotal} />,
         {
           title: '',
           showCloseIcon: true,

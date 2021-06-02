@@ -28,6 +28,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   //muestra productos en carrito
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0)
 
   console.log("cartMenu", cart);
 
@@ -81,20 +82,25 @@ function App() {
                 setShowModal={setShowModal}
                 cart={cart}
                 setCart={setCart}
+                total={total}
+                setTotal={setTotal}
               />
             ))}
           </AppContainer>
 
           {cart.length === 0 ? null : (
-            <FloatButton cart={cart} setCart={setCart} />
+            <FloatButton cart={cart} setCart={setCart} total={total} setTotal={setTotal} />
           )}
         </Route>
         <Route path="/formulario-burrico">
-          <Form />
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Form 
+          cart={cart}
+          setCart={setCart}
+          />
+          {/* <Link to="/" style={{textDecoration: 'none'}}> */}
             <IconRetMenu />
             <AppP>Menú principal</AppP>
-          </Link>
+          {/* </Link> */}
         </Route>
         <Route path="/">
           <Sucursales data={data} />

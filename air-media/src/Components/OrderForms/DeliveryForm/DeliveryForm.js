@@ -19,7 +19,11 @@ import {
   FormEnv,
 } from "../../../Pages/Form/FormElements";
 
-const DeliveryForm = () => {
+const DeliveryForm = (cart, setCart, item) => {
+
+ const [updateFinalCart, setUpdateFinalCart ] = useState(cart);
+
+
 //DATE & HOUR FUNCTION
   const [value, onChange] = useState('10:00');
   const [selectedDate, setSelectedDate] = useState(null);  
@@ -81,7 +85,11 @@ const DeliveryForm = () => {
     );
   };
 
-
+  const updateInfoCart = ()=>{
+    const dataForm = setDataClient;
+    setCart({...cart, dataForm})
+  }
+  console.log(updateInfoCart, 'funciona');
   //WA FUNCTION
   function Whatsapp() {
     let restaurantNumber = 525531345330;
