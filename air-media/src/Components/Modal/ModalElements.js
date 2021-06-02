@@ -4,7 +4,7 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-	overflow: scroll;
+  overflow: scroll;
 `;
 export const ModalImgContainer = styled.img`
   position: relative;
@@ -12,13 +12,13 @@ export const ModalImgContainer = styled.img`
   height: auto;
   border-radius: 20px;
   top: 20px;
-	margin-left: 23px;
+  margin-left: 23px;
 `;
 export const ModalH2 = styled.h2`
   position: relative;
   display: block;
   top: 30px;
-	text-align: center;
+  text-align: center;
 `;
 export const ModalH4 = styled.h4`
   position: relative;
@@ -28,16 +28,16 @@ export const ModalH4 = styled.h4`
   color: white;
   font-size: 15px;
   padding-top: 5px;
-	width: 100px;
-	padding-left: 17px;
-	padding-bottom: 5px;
-	margin-left: 110px;
-	margin-bottom: 15px;
+  width: 100px;
+  padding-left: 17px;
+  padding-bottom: 5px;
+  margin-left: 110px;
+  margin-bottom: 15px;
 `;
 export const ModalP = styled.p`
   width: 264px;
   margin-top: 37px;
-	margin-left: 36px;
+  margin-left: 36px;
 `;
 export const ModalInput = styled.input`
   position: relative;
@@ -46,15 +46,15 @@ export const ModalInput = styled.input`
   border: 2px solid #E85D17;
   box-sizing: border-box;
   border-radius: 10px;
-	margin-left: 30px;
-	align-items: center;
-	outline: none;
+  margin-left: 30px;
+  align-items: center;
+  outline: none;
   ::placeholder {
     padding: 5px;
   }
 `;
 export const DivButton = styled.div`
-	margin-left: 50px;
+  margin-left: 50px;
 `;
 export const ModalButton = styled.button`
   position: relative;
@@ -67,7 +67,7 @@ export const ModalButton = styled.button`
   top: 9px;
   margin-bottom: 12px;
   border-radius: 15px;
-	left: -20px;
+  left: -20px;
   box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   &:hover {
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
@@ -84,7 +84,7 @@ export const ModalCount = styled.div`
   color: white;
   background: #E85D17;
   border-radius: 20px;
-	margin-left: 100px;
+  margin-left: 100px;
 `;
 export const ModalCountBtn = styled.button`
   background: transparent;
@@ -157,7 +157,7 @@ export const ModalCartInput = styled.input`
   border: 2px solid #E85D17;
   box-sizing: border-box;
   border-radius: 10px;
-	outline: none;
+  outline: none;
   ::placeholder {
     padding: 5px;
   }
@@ -178,9 +178,9 @@ export const ModalCartBtns = styled.div`
   z-index: 2;
   position: fixed;
   top: 490px;
-	left: 20px;
-  height: 70px;
-	background: white;
+  left: 20px;
+  height: 110px;
+  background: white;
 `;
 export const ModalBtnCancel = styled.button`
   position: relative;
@@ -192,7 +192,7 @@ export const ModalBtnCancel = styled.button`
   border-radius: 15px;
   cursor: pointer;
   top: 40px;
-  margin-bottom: 60px;	
+  margin-bottom: 60px;  
   &:hover {
     box-shadow: 0px 4px 4px rgba(232, 93, 23, 0.6);
   }
@@ -240,8 +240,9 @@ export const IconDelete = styled(RiDeleteBin6Line)`
 `;
 export const ModalCartContainer = styled.div`
   displya: flex;  
-  margin-bottom: 100px;	
-	overflow: scroll;
+  margin-bottom: 100px; 
+  overflow: scroll;
+  height: 395px;
 `;
 export const DivButtons = styled.div`
 display: flex;
@@ -256,6 +257,7 @@ margin-rigth: 50px;
 //     margin-right: auto;
 //     margin-left: auto;
 //     width: 100%;
+// overflow: scroll;
 //   }
 //   @media (min-width: 768px) {
 //     .fullscreen-modal .modal-dialog {

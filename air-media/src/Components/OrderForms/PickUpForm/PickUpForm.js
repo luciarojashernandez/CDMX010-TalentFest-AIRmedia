@@ -1,21 +1,25 @@
 //formulario para recoger
 import React, { Fragment, useState } from "react";
 // import FormNav from "../../FormNav/FormNav";
+import { BrowserRouter as Router, Switch, Route,  Link } from "react-router-dom";
 import {
+  PickP,
+  IconReturn,
   FormDiv,
   FormName,
-  FormDatePick,
-  SelectDatePick,
+  PickUpInfo,
   FormPhonePick,
   FormCommentsPick,
   FormBtnPick,
   FormSubtotal,
   FormEnv,
+  PickUpCost,
+  FormTotal,
   Date,
   Hour
-} from "../../../Pages/Form/FormElements";
+} from "./PickUpElements";
 
-const PickUpForm = ({cart, setCart}) => {
+const PickUpForm = ({cart, setCart, total, setTotal}) => {
   console.log('cartpickup', cart)
   //FORM STATE
   //Se crea un estado vacío para ir llenando
@@ -50,38 +54,61 @@ const PickUpForm = ({cart, setCart}) => {
     });
   };
 
-  const sendData = (e) => {
-    //evitar el envío automático
+  //WA FUNCTION
+  function Whatsapp(e) {
     e.preventDefault();
-    console.log(
-      dataClient.name +
-        "_" +
-        dataClient.adress +
-        "_" +
+    let restaurantNumber = 525531345330;
+    let product = cart.map ((product) => product.product )
+    let contador = cart.map ((product) => product.contador)
+    let subTotal = total;
+    let message = "¡Hola Burri.Co! mi pedido es el siguiente:";
+    let destinatary = ". Es a nombre de:";
+    let phone = ". Mi número de contacto es:" ; 
+    let time = ". Quiero recogerlo a las:";
+    let date = ", del:";
+    let comentario = ". Comentarios extra:";
+    let numProduct = ". Número de productos";
+    let subtotal = ". Subtotal:";
+    let totalCart = ". Total:";
+    let concatenar = message + ' ' 
+        + product + ' ' + destinatary + ' ' +
+        dataClient.name +
+        " " + time + ' ' +
+        dataClient.hour +
+        " " + date + ' ' +
         dataClient.date +
-        "_" +
-        dataClient.pagoEfectivo +
-        "_" +
-        dataClient.pagoLinea +
-        "_" +
+        " " + phone + ' ' +
         dataClient.phone +
-        "_" +
+        " " +comentario + ' '+
         dataClient.commments +
-        "_" +
-        dataClient.subtotal +
-        "_" +
-        dataClient.total
-    );
-  };
-  console.log(sendData)
+        " " + numProduct + ' '+
+        contador+
+        " " +subtotal+' '+
+        subTotal +
+        // " " + totalCart +
+        // subTotal
+      console.log(concatenar, 'conca');
+        console.log(concatenar.replace(/\s/gi, "%20"))
+    // Modificando espacios en blanco
+    let remplazandoEspacios = concatenar.replace(/\s/gi, "%20");
+    console.log("remplazarEspaciosURL", remplazandoEspacios);
+    let url = `https://wa.me/${restaurantNumber}?text=${remplazandoEspacios}`;
+    console.log("url final", url);
+  }
 
   return (
     <Fragment>
-      <form onSubmit={sendData}>
+      <Link to="/" style={{textDecoration: 'none'}}>
+					<IconReturn />
+					<PickP>Menú principal</PickP>
+				</Link>
+      <form onSubmit={Whatsapp}>
         <FormDiv>
           <FormName type="text" name="name" placeholder="Nombre" onChange={handleInputChange} />
-          <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
-          <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+          <PickUpInfo>
+            <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
+            <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+          </PickUpInfo>
           
           <FormPhonePick type="text" name="phone" placeholder="Teléfono" onChange={handleInputChange}  />
           <FormCommentsPick
@@ -89,8 +116,12 @@ const PickUpForm = ({cart, setCart}) => {
             name="commments"
             placeholder="Comentarios"
           />
-          <FormSubtotal type="number" name="subtotal" onChange={handleInputChange}>Subtotal ${0}MXN</FormSubtotal>
-          <FormEnv type="number" name="subtotal" onChange={handleInputChange}>Costo de envío ${0}MXN</FormEnv>
+          <PickUpCost>
+            <FormSubtotal type="number" name="subtotal" onChange={handleInputChange}>Subtotal: ${total}MXN</FormSubtotal>
+            <FormEnv type="number" name="subtotal" onChange={handleInputChange}>Costo de envío: ${0}MXN</FormEnv>
+            <FormTotal>Total: ${total}MXN</FormTotal>
+          </PickUpCost>
+          
         </FormDiv>
         {/* <h2 type="number" name="total">Total: ${0}</h2> */}
         <FormBtnPick type="submit" >Confirmar pedido</FormBtnPick>

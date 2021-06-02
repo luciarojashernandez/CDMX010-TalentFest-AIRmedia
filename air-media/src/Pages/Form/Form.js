@@ -4,7 +4,7 @@ import { FormBtns, FormRequestBtn, FormPickUpBtn } from "./FormElements";
 import DeliveryForm from "../../Components/OrderForms/DeliveryForm/DeliveryForm.js";
 import PickUpForm from "../../Components/OrderForms/PickUpForm/PickUpForm.js";
 
-function Form({cart, setCart}) {
+function Form({cart, setCart, total, setTotal}) {
   console.log('carrito form', cart, setCart)
   const [deliveryForm, setDeliveryForm] = useState(true);
 
@@ -20,7 +20,7 @@ function Form({cart, setCart}) {
         </FormRequestBtn>
         <FormPickUpBtn onClick={handleSetPickUp}>Recoger pedido</FormPickUpBtn>
       </FormBtns>
-      {deliveryForm ? <DeliveryForm cart={cart} setCart={setCart}/> : <PickUpForm cart={cart} setCart={setCart}/>}
+      {deliveryForm ? <DeliveryForm cart={cart} setCart={setCart} total={total} setTotal={setTotal}/> : <PickUpForm cart={cart} setCart={setCart} total={total} setTotal={setTotal}/>}
     </Fragment>
   );
 }

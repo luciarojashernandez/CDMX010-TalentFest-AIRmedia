@@ -95,11 +95,11 @@ function App() {
           )}
         </Route>
         <Route path="/formulario-burrico">
-          <Form cart={cart} setCart={setCart}/>
-          <Link to="/" style={{textDecoration: 'none'}}>
+          <Form cart={cart} setCart={setCart} total={total} setTotal={setTotal}/>
+          {/* <Link to="/" style={{textDecoration: 'none'}}>
             <IconRetMenu />
             <AppP>Menú principal</AppP>
-          </Link>
+          </Link> */}
         </Route>
         <Route path="/">
           <Sucursales data={data} />
