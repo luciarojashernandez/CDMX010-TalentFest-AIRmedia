@@ -3,28 +3,31 @@ import React, { Fragment, useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import TimePicker from 'react-time-picker';
+import { BrowserRouter as Router, Switch, Route,  Link } from "react-router-dom";
 import {
-  FormDiv,
-  FormName,
-  FormAdress,
-  FormDate,
+  IconReturn,
+  DeliveryP,
+  DeliveryDiv,
+  DeliveryName,
+  DeliveryAdress,
+  DeliveryDate,
   SelectDate,
-  FormPay,
-  FormRadio,
-  FormInput,
-  FormPhone,
-  FormComments,
+  DeliveryPay,
+  DeliveryRadio,
+  DeliveryInput,
+  DeliveryPhone,
+  DeliveryComments,
   FormBtnDelivery,
-  FormSubtotal,
-  FormEnv,
+  DeliverySubtotal,
+  DeliveryEnv,
   Date,
   Hour
-} from "../../../Pages/Form/FormElements";
+} from "./DeliveryElements";
 
 const DeliveryForm = ({cart, setCart}) => {
  console.log('cartdelivery', cart)
-
-//FORM STATE
+	console.log('cart', cart)
+	//FORM STATE
    //Se crea un estado vacío para ir llenando
    const [dataClient, setDataClient] = useState({
     name: "",
@@ -39,6 +42,8 @@ const DeliveryForm = ({cart, setCart}) => {
     envio: 30,
     total: 0,
   });
+
+	
 
   //Se obtienen la relación de datos desde el evento (onChange)
   const handleInputChange = (e) => {
@@ -58,28 +63,84 @@ const DeliveryForm = ({cart, setCart}) => {
       [e.target.total]: e.target.value,
     });
   };
-  const sendData = (e) => {
+
+	const getProduct = (cart) => {
+		let message = "¡Hola Burri.Co! quiero ordenar:";
+		let num = "número de productos";
+
+
+		let product = cart.map ((product) => product.product )
+		let contador = cart.map ((product) => product.contador)
+		let subTotal = cart.map ((product) => product.finalPrice)
+
+		console.log('orden', product)
+		console.log('orden', contador)
+		// console.log('orden', finalPrice)
+		
+		let orden = message + ' ' + product + ' ' + num + ' ' + contador + subTotal
+		console.log('ordenFinal', orden)
+		// sendData(orden)
+	}
+	getProduct(cart)
+
+	const sendData = (e) => {
+
+		// const getProduct = (cart) => {
+		// 	let message = "¡Hola Burri.Co! quiero ordenar:";
+		// let num = "número de productos";
+
+
+		// let product = cart.map ((product) => product.product )
+		// let contador = cart.map ((product) => product.contador)
+		// let subTotal = cart.map ((product) => product.finalPrice)
+
+		// console.log('orden', product)
+		// console.log('orden', contador)
+		// // console.log('orden', finalPrice)
+		
+		// let orden = message + ' ' + product + ' ' + num + ' ' + contador + subTotal
+		// console.log('ordenFinal', orden)
+			
+		// }
+		// console.log('hola', getProduct)
+		// console.log('orden de funcion', orden)
+	
     //evitar el envío automático
     e.preventDefault();
-    console.log(dataClient.name +
-        "_" +
+		// let restaurantNumber = 525531345330;
+		let message = "¡Hola Burri.Co! quiero ordenar:";
+		let destinatary = " a nombre de:";
+		let address = "con punto de entrega en:"
+		let pay = "mi pago es:"
+		let phone = "mi número es:"		
+		let time = "a las:"
+		let date = "del:"
+    let urlData = message + ' ' 
+				+ cart + ' ' + destinatary + ' ' +
+				dataClient.name +
+        " " + address + ' ' +
         dataClient.adress +
-        "_" +
-        dataClient.date +
-        "_" +
+        " " + time + ' ' +
+        dataClient.hour +
+        " " + date + ' ' +
+				dataClient.date +
+        " " + pay + ' ' +
         dataClient.pagoEfectivo +
-        "_" +
+        " " +
         dataClient.pagoLinea +
-        "_" +
+        " " + phone + ' ' +
         dataClient.phone +
-        "_" +
+        " " +
         dataClient.commments +
-        "_" +
+        " " +
         dataClient.subtotal +
-        "_" +
+        " " +
         dataClient.total
-    );
+			
+				console.log(urlData.replace(/\s/gi, "%20"))
+    ;
   };
+
 
 
   //WA FUNCTION
@@ -106,34 +167,37 @@ const DeliveryForm = ({cart, setCart}) => {
   Whatsapp();
 
   return (
-    <Fragment>
-      <form onSubmit={sendData}>
-      <FormDiv>
-        <FormName type="text" name="name" placeholder="Nombre" onChange={handleInputChange}/>
-        <FormAdress type="text" name="adress" placeholder="Domicilio" onChange={handleInputChange}/>
-        <Date name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></Date>
-        <Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
-          
-        <FormPay> Forma de pago </FormPay>
-        <FormRadio>
-          <FormInput type="radio" value="Efectivo" name="pagoEfectivo" onChange={handleInputChange} />
-          <label for="huey">Efectivo</label>
-          <FormInput type="radio" value="PagoLinea" name="pagoLinea" onChange={handleInputChange} />
-          <label for="huey">Pago en línea</label>
-        </FormRadio>
-        <FormPhone type="text" name="phone" placeholder="Teléfono" onChange={handleInputChange} />
-        <FormComments type="text" name="commments" placeholder="Comentarios" onChange={handleInputChange}/>
-        <FormSubtotal type="number" name="subtotal">
-            Subtotal ${0}MXN
-          </FormSubtotal>
-          <FormEnv type="number" name="envio">
-            Costo de envío ${30}MXN
-          </FormEnv>
-          {/* <h2 type="number" name="total">Total: ${0}</h2> */}
-      </FormDiv>
-      <FormBtnDelivery type="submit" >Confirmar pedido</FormBtnDelivery>
-      </form>
-    </Fragment>
+		<Fragment>
+		<Link to="/" style={{textDecoration: 'none'}}>
+					<IconReturn />
+					<DeliveryP>Menú principal</DeliveryP>
+				</Link>
+		<form onSubmit={sendData}>
+		<DeliveryDiv>
+			<DeliveryName type="text" name="name" placeholder="Nombre" onChange={handleInputChange}/>
+			<DeliveryAdress type="text" name="adress" placeholder="Domicilio" onChange={handleInputChange}/>
+			<DeliveryDate name="date" type="date" min="2021-06-02" max="2021-12-31" step="1" onChange={handleInputChange}></DeliveryDate>
+			<Hour name="hour" type="time" min="10:00" max="21:00" step="3600" onChange={handleInputChange}></Hour>
+			<DeliveryPay> Forma de pago </DeliveryPay>
+			<DeliveryRadio>
+				<DeliveryInput type="radio" value="Efectivo" name="pagoEfectivo" onChange={handleInputChange} />
+				<label for="huey">Efectivo</label>
+				<DeliveryInput type="radio" value="PagoLinea" name="pagoLinea" onChange={handleInputChange} />
+				<label for="huey">Pago en línea</label>
+			</DeliveryRadio>
+			<DeliveryPhone type="text" name="phone" placeholder="Teléfono" onChange={handleInputChange} />
+			<DeliveryComments type="text" name="commments" placeholder="Comentarios" onChange={handleInputChange}/>
+			<DeliverySubtotal type="number" name="subtotal">
+					Subtotal ${0}MXN
+				</DeliverySubtotal>
+				<DeliveryEnv type="number" name="envio">
+					Costo de envío ${30}MXN
+				</DeliveryEnv>
+				{/* <h2 type="number" name="total">Total: ${0}</h2> */}
+		</DeliveryDiv>
+		<FormBtnDelivery type="submit" >Confirmar pedido</FormBtnDelivery>
+		</form>
+	</Fragment>
   );
 };
 
