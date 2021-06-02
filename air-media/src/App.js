@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./Firebase";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,  Link } from "react-router-dom";
 import Menu from "./Pages/Menu/Menu";
 import Form from "./Pages/Form/Form";
 import Sucursales from "./Pages/Sucursales/Sucursales";
@@ -90,7 +90,7 @@ function App() {
           )}
         </Route>
         <Route path="/formulario-burrico">
-          <Form />
+          <Form cart={cart} setCart={setCart}/>
           <Link to="/" style={{textDecoration: 'none'}}>
             <IconRetMenu />
             <AppP>Menú principal</AppP>

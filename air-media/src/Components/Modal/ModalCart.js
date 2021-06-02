@@ -1,6 +1,6 @@
 import { useDialog } from "react-st-modal";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Form from "../../Pages/Form/Form";
 import {
   ModalContainer,
@@ -119,9 +119,9 @@ function ModalCart({ cart, setCart }) {
         >
           Cancelar
         </ModalBtnCancel>
-        <a href="/formulario-burrico">
-          <ModalBtnContinue>Continuar</ModalBtnContinue>
-        </a>
+        {/* <Link to="/formulario-burrico"> */}
+          <ModalBtnContinue to='/formulario-burrico'>Continuar</ModalBtnContinue>
+        {/* </Link> */}
       </ModalCartBtns>
 			</DivButtons>	
     </ModalContainer>

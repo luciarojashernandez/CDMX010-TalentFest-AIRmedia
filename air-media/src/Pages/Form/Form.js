@@ -4,7 +4,8 @@ import { FormBtns, FormRequestBtn, FormPickUpBtn } from "./FormElements";
 import DeliveryForm from "../../Components/OrderForms/DeliveryForm/DeliveryForm.js";
 import PickUpForm from "../../Components/OrderForms/PickUpForm/PickUpForm.js";
 
-function Form() {
+function Form({cart, setCart}) {
+  console.log('carrito form', cart, setCart)
   const [deliveryForm, setDeliveryForm] = useState(true);
 
   const handleSetDelivery = () => setDeliveryForm(true);
